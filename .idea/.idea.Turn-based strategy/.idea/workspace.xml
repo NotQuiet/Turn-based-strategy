@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e335695-59bb-4aba-bc51-3621f8237e09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/AttackModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/AttackModel.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/AttackView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/AttackView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/AttackViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/AttackViewModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Factories.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Factories/Core.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pools.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pools/Core.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696605821965</updated>
-      <workItem from="1696605829343" duration="7193000" />
+      <workItem from="1696605829343" duration="7589000" />
     </task>
     <servers />
   </component>

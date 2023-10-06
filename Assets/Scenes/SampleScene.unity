@@ -320,6 +320,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &43811162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6321143288660709105, guid: ecf045120c3ff4805bb30ae403984db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6321143288618012587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &43811164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6321143288660709111, guid: ecf045120c3ff4805bb30ae403984db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6321143288618012587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43811162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &43811167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43811162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43618570a0154fffb7d5ebc1e9e10a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyBuffButton: {fileID: 43811164}
 --- !u!1 &57442809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5110571977347799065, guid: ecf045120c3ff4805bb30ae403984db4,
@@ -1686,11 +1717,13 @@ MonoBehaviour:
   - {fileID: 1338973607}
   - {fileID: 1932439709}
   - {fileID: 1633481150}
+  - {fileID: 43811167}
   viewsToShowOnStart:
   - {fileID: 733399999}
   - {fileID: 1338973607}
   - {fileID: 1932439709}
   - {fileID: 1633481150}
+  - {fileID: 43811167}
   dataSo: {fileID: 11400000, guid: 119ce21338cda41cabf14e399a8bc3d6, type: 2}
 --- !u!1 &1472540763
 GameObject:
