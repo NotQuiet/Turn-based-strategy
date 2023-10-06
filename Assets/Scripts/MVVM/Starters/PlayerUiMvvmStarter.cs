@@ -52,6 +52,22 @@ namespace MVVM.Starters
                 {
                     vampirismBarView.Init((SliderBarBaseViewModel)diVm);
                 }
+                
+                if (view is AttackView attackView)
+                {
+                    var model = new AttackModel();
+                    var viewModel = new AttackViewModel(model);
+                    
+                    attackView.Init(viewModel);
+                }
+                
+                if (view is ApplyBuffView applyBuffView)
+                {
+                    var model = new ApplyBuffModel();
+                    var viewModel = new ApplyBuffViewModel(model);
+                    
+                    applyBuffView.Init(viewModel);
+                }
             }
         }
 
