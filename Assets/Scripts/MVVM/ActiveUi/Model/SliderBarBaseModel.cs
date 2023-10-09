@@ -1,4 +1,5 @@
 using System;
+using DTO.Configurations;
 using MVVM.Controllers;
 using ScriptableObjects;
 using UniRx;
@@ -9,14 +10,30 @@ namespace MVVM.ActiveUi.Model
     public class SliderBarBaseModel : Core.Model
     {
         private PlayerConfigController _configController;
+        private ActiveBuffsController _buffsController;
 
         public ReactiveCommand<BasePlayerConfig> OnSetConfig = new();
+        public ReactiveCommand<BuffConfigDto> OnGetBuff = new();
 
-        public SliderBarBaseModel(PlayerConfigController configController)
+        public SliderBarBaseModel(PlayerConfigController configController, ActiveBuffsController buffsController)
         {
             _configController = configController;
+            _buffsController = buffsController;
             
-            _configController.InitializeSliders.Subscribe(InitializeSliders).AddTo(Disposable);
+        }
+
+        protected override void Subscribe(Action onSubscribe)
+        {
+            base.Subscribe(() =>
+            {
+                _configController.InitializeSliders.Subscribe(InitializeSliders).AddTo(Disposable);
+                _buffsController.OnGetBuff.Subscribe(OnBuff).AddTo(Disposable);
+            });
+        }
+
+        private void OnBuff(BuffConfigDto buff)
+        {
+            OnGetBuff.Execute(buff);
         }
 
         private void InitializeSliders(PlayerDataConfigurationSo data)

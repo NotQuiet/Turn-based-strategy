@@ -1,3 +1,4 @@
+using DTO.Configurations;
 using DTO.UI;
 using MVVM.ActiveUi.Model;
 using MVVM.ActiveUi.ViewModel;
@@ -12,7 +13,7 @@ namespace MVVM.ActiveUi.View
     public class SliderBarBaseView : View<SliderBarBaseViewModel, SliderBarBaseModel>
     {
         [SerializeField] protected Enums.Enums.PlayerConfigurationType playerConfigurationType;
-        [SerializeField] private Slider slider;
+        [SerializeField] protected Slider slider;
         [SerializeField] protected TextMeshProUGUI sliderValue;
 
         protected override void Subscribe()
