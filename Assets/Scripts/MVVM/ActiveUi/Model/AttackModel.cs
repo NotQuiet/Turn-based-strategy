@@ -25,6 +25,8 @@ namespace MVVM.ActiveUi.Model
             _attackController = attackController;
         }
 
+        private int _baseDamage;
+
         protected override void Subscribe(Action onSubscribe)
         {
             base.Subscribe(() =>
@@ -39,10 +41,13 @@ namespace MVVM.ActiveUi.Model
             
             CreateAttackData();
             _attackController.Attack(_attackData);
+
+            _attackData = new();
         }
         
         private void CreateAttackData()
         {
+            _attackData.damage = _baseDamage;
             _attackData = _attackDataService.SetAttackData(_attackData, _buffsController.CurrentBuffs.Values);
         }
 
@@ -51,7 +56,7 @@ namespace MVVM.ActiveUi.Model
             foreach (var data in config.playerConfigurations)
             {
                 if (data.playerConfigurationType == Enums.Enums.PlayerConfigurationType.Damage)
-                    _attackData.damage = data.data.currentValue;
+                    _baseDamage = data.data.currentValue;
             }
         }
 
