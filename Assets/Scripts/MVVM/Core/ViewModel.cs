@@ -19,7 +19,7 @@ namespace MVVM.Core
 
         public virtual void OnViewShow()
         {
-            Subscribe(() => Debug.Log($"ViewModel {nameof(GetType)} subscribe"));
+            Subscribe(() => Debug.Log($"ViewModel {GetType().Name} subscribe"));
             Model.OnViewShow();
         }
         public virtual void OnViewHide()

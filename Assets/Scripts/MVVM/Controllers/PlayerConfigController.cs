@@ -1,5 +1,6 @@
 using ScriptableObjects;
 using UniRx;
+using UnityEngine;
 
 namespace MVVM.Controllers
 {
@@ -16,6 +17,8 @@ namespace MVVM.Controllers
 
         public override void OnInitialize()
         {
+            Debug.Log("OnInitialize");
+            
             InitializeSliders.Execute(_startData);
         }
     }

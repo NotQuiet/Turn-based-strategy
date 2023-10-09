@@ -17,7 +17,7 @@ namespace MVVM.Starters
         private PlayerConfigController _configController;
         private ActiveBuffsController _buffsController;
         private AttackController _attackController;
-
+        
         private List<ModelsController> _controllers;
 
         protected override void CreateControllers()

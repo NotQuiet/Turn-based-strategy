@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e335695-59bb-4aba-bc51-3621f8237e09" name="Changes" comment="" />
+    <list default="true" id="2e335695-59bb-4aba-bc51-3621f8237e09" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IRestartReactor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IRestartReactor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/RestartController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/RestartController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/RestartService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/RestartService.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/SliderBarBaseModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/SliderBarBaseModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/DamageBarView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/DamageBarView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/AttackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/PlayerConfigController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/PlayerConfigController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/Model.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/Model.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/MvvmStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/MvvmStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/View.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/View.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/ViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/ViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696605821965</updated>
       <workItem from="1696605829343" duration="9000000" />
-      <workItem from="1696843702774" duration="8593000" />
+      <workItem from="1696843702774" duration="10753000" />
     </task>
     <servers />
   </component>

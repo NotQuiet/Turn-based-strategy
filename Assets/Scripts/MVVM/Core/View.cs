@@ -27,7 +27,7 @@ namespace MVVM.Core
 
             Subscribe();
 
-            Debug.Log($"Initialize {GetType().Name} by view model: " + ViewModel.GetType().Name);
+            // Debug.Log($"Initialize {GetType().Name} by view model: " + ViewModel.GetType().Name);
 
             ViewModel.OnViewShow();
         }

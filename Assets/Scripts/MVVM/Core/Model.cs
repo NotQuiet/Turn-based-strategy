@@ -25,6 +25,8 @@ namespace MVVM.Core
         {
             if (_isSubscribed) return;
 
+            Debug.Log($"Model {GetType().Name} subscribe");
+
             _isSubscribed = true;
             onSubscribe!();
         }
@@ -33,6 +35,8 @@ namespace MVVM.Core
         {
             _isSubscribed = false;
             Disposable.Clear();
+            
+            Debug.Log("Unsubscribe");
         }
     }
 }

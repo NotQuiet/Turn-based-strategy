@@ -7,8 +7,7 @@ namespace MVVM.Controllers
     public class AttackController : ModelsController
     {
         public ReactiveCommand<AttackDataDto> OnAttack = new();
-
-
+        
         public void Attack(AttackDataDto attackDataDto)
         {
             OnAttack.Execute(attackDataDto);

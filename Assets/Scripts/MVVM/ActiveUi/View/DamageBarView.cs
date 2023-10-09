@@ -1,4 +1,5 @@
 using DTO.UI;
+using UnityEngine;
 
 namespace MVVM.ActiveUi.View
 {
@@ -9,6 +10,8 @@ namespace MVVM.ActiveUi.View
             if(playerConfigurationType != cort.Item2) return;
             
             sliderValue.text = $"{cort.Item1.currentValue}";
+
+            Debug.Log("SetSliderValue");
         }
     }
 }

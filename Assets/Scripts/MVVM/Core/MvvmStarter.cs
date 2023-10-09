@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
 namespace MVVM.Core
 {
-    public class MvvmStarter : MonoBehaviour
+    public class MvvmStarter : MonoBehaviour, IRestartReactor
     {
         [SerializeField] protected List<ViewBase> views;
         [SerializeField] protected List<ViewBase> viewsToShowOnStart;
@@ -52,6 +53,15 @@ namespace MVVM.Core
         protected virtual void CreateMvvm()
         {
             
+        }
+
+        public void Restart()
+        {
+            HideViews();
+
+            _isInitialized = false;
+            
+            InitializeStarter();
         }
     }
 }
