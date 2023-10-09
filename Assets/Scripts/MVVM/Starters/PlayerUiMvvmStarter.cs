@@ -5,6 +5,7 @@ using MVVM.ActiveUi.ViewModel;
 using MVVM.Controllers;
 using MVVM.Core;
 using ScriptableObjects;
+using UniRx;
 using UnityEngine;
 
 namespace MVVM.Starters
@@ -20,6 +21,8 @@ namespace MVVM.Starters
 
         private List<ModelsController> _controllers;
 
+        public ReactiveCommand<List<ModelsController>> OnControllersInitialized = new ();
+
         protected override void CreateControllers()
         {
             _configController = new PlayerConfigController(dataSo);
@@ -28,7 +31,9 @@ namespace MVVM.Starters
             
             _controllers = new List<ModelsController>
             {
-                _configController
+                _configController,
+                _buffsController,
+                _attackController
             };
         }
 
@@ -92,12 +97,18 @@ namespace MVVM.Starters
         protected override void ShowViews()
         {
             base.ShowViews();
-            
-            
+
+            InitializeControllers();
+        }
+
+        private void InitializeControllers()
+        {
             foreach (var controller in _controllers)
             {
                 controller.OnInitialize();
             }
+
+            OnControllersInitialized.Execute(_controllers);
         }
     }
 }

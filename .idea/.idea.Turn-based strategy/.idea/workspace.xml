@@ -5,19 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e335695-59bb-4aba-bc51-3621f8237e09" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DTO/Matchmaking.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DTO/Matchmaking/PlayersTurnDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DTO/Matchmaking/PlayersTurnDto.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/SliderBarBaseModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/SliderBarBaseModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/ArmorBarView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/ArmorBarView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/HealthBarView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/HealthBarView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/SliderBarBaseView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/SliderBarBaseView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/VampirismBarView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/VampirismBarView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/SliderBarBaseViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/SliderBarBaseViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ModelsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ModelsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/MvvmStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/MvvmStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/ViewBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/ViewBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/StarterInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/StarterInitializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/RoundManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

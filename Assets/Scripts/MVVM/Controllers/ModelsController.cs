@@ -5,5 +5,9 @@ namespace MVVM.Controllers
         public virtual void OnInitialize()
         {
         }
+        
+        public virtual void Restart()
+        {
+        }
     }
 }
