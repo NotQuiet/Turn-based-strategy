@@ -12,14 +12,17 @@ namespace MVVM.Starters
     public class PlayerUiMvvmStarter : MvvmStarter
     {
         [SerializeField] private PlayerDataConfigurationSo dataSo;
+        [SerializeField] private BuffsConfigDataSo buffsSo;
         
         private PlayerConfigController _configController;
+        private ActiveBuffsController _buffsController;
 
         private List<ModelsController> _controllers;
 
         protected override void CreateControllers()
         {
             _configController = new PlayerConfigController(dataSo);
+            _buffsController = new ActiveBuffsController(buffsSo);
             
             _controllers = new List<ModelsController>
             {
@@ -52,6 +55,10 @@ namespace MVVM.Starters
                 {
                     vampirismBarView.Init((SliderBarBaseViewModel)diVm);
                 }
+                if (view is DamageBarView damageBarView)
+                {
+                    damageBarView.Init((SliderBarBaseViewModel)diVm);
+                }
                 
                 if (view is AttackView attackView)
                 {
@@ -63,11 +70,20 @@ namespace MVVM.Starters
                 
                 if (view is ApplyBuffView applyBuffView)
                 {
-                    var model = new ApplyBuffModel();
+                    var model = new ApplyBuffModel(_buffsController);
                     var viewModel = new ApplyBuffViewModel(model);
                     
                     applyBuffView.Init(viewModel);
                 }
+                
+                if (view is ActiveBuffsView activeBuffsView)
+                {
+                    var model = new ActiveBuffsModel(_buffsController);
+                    var viewModel = new ActiveBuffsViewModel(model);
+                    
+                    activeBuffsView.Init(viewModel);
+                }
+                
             }
         }
 

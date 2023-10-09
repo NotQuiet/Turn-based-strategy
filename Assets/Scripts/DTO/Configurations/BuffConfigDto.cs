@@ -13,5 +13,8 @@ namespace DTO.Configurations
         public int armorToEnemy;
         public int vampirismToSelf;
         public int vampirismToEnemy;
+        [Space]
+        public int lifeTime;
+
     }
 }

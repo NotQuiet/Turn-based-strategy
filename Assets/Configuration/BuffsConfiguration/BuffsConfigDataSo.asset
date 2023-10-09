@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 6ecc28853909401a818546372a47a2f4, type: 3}
   m_Name: BuffsConfigDataSo
-  m_EditorClassIdentifier: Assembly-CSharp:ScriptableObjects:BuffsConfigDataSo
+  m_EditorClassIdentifier: 
   buffsList:
   - title: Double damage
     damageMultiplication: 2
@@ -19,27 +19,32 @@ MonoBehaviour:
     armorToEnemy: 0
     vampirismToSelf: 0
     vampirismToEnemy: 0
+    lifeTime: 2
   - title: Armor self
     damageMultiplication: 0
     armorToSelf: 50
     armorToEnemy: 0
     vampirismToSelf: 0
     vampirismToEnemy: 0
+    lifeTime: 2
   - title: Armor destruction
     damageMultiplication: 0
     armorToSelf: 0
     armorToEnemy: -10
     vampirismToSelf: 0
     vampirismToEnemy: 0
+    lifeTime: 3
   - title: Vampirism self
     damageMultiplication: 0
     armorToSelf: -25
     armorToEnemy: 0
     vampirismToSelf: 50
     vampirismToEnemy: 0
+    lifeTime: 1
   - title: Vampirism decrease
     damageMultiplication: 0
     armorToSelf: 0
     armorToEnemy: 0
     vampirismToSelf: 0
     vampirismToEnemy: -25
+    lifeTime: 3

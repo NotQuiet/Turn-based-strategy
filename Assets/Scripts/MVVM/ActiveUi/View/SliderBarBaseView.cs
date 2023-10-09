@@ -11,10 +11,9 @@ namespace MVVM.ActiveUi.View
 {
     public class SliderBarBaseView : View<SliderBarBaseViewModel, SliderBarBaseModel>
     {
-        [SerializeField] private Enums.Enums.PlayerConfigurationType playerConfigurationType;
+        [SerializeField] protected Enums.Enums.PlayerConfigurationType playerConfigurationType;
         [SerializeField] private Slider slider;
-        [SerializeField] private TextMeshProUGUI sliderValue;
-        
+        [SerializeField] protected TextMeshProUGUI sliderValue;
 
         protected override void Subscribe()
         {
@@ -23,7 +22,7 @@ namespace MVVM.ActiveUi.View
             ViewModel.Initialize.Subscribe(SetSliderValue).AddTo(Disposable);
         }
 
-        private void SetSliderValue((ConfigData, Enums.Enums.PlayerConfigurationType) cort)
+        protected virtual void SetSliderValue((ConfigData, Enums.Enums.PlayerConfigurationType) cort)
         {
             if(playerConfigurationType != cort.Item2) return;
 
