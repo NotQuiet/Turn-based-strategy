@@ -5,18 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e335695-59bb-4aba-bc51-3621f8237e09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/DamageBarView.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/DamageBarView.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DTO/Configurations/AttackDataDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/DTO/Configurations/AttackDataDto.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/CreateAttackDataService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Services/CreateAttackDataService.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ActiveBuffsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ActiveBuffsModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ApplyBuffModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ApplyBuffModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/ActiveBuffsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/ActiveBuffsView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/SliderBarBaseView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/SliderBarBaseView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/ActiveBuffs/ActiveBuffsUi.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/ActiveBuffs/ActiveBuffsUi.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/AttackModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/AttackModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ActiveBuffsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ActiveBuffsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Starters/PlayerUiMvvmStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UiCells/Buffs/BuffCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UiCells/Buffs/BuffCell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696605821965</updated>
       <workItem from="1696605829343" duration="9000000" />
-      <workItem from="1696843702774" duration="4930000" />
+      <workItem from="1696843702774" duration="6600000" />
     </task>
     <servers />
   </component>

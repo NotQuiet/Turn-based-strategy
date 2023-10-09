@@ -49,7 +49,7 @@ namespace MVVM.ActiveUi.ViewModel
             var cell = _buffPool.GetCell(_buffCellFactory, _grid);
 
             var buffUi = _uiBuffsData.buffsList.FirstOrDefault(d => d.title == config.title);
-            cell.InitializeUi(buffUi);
+            cell.InitializeUi(buffUi, config.lifeTime);
         }
 
         private void SetPool()

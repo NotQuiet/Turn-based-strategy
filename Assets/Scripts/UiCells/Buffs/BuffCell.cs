@@ -12,10 +12,10 @@ namespace UiCells.Buffs
         
         [SerializeField] private Image buffImage;
 
-        public void InitializeUi(BuffCellUiDto buffUiDto)
+        public void InitializeUi(BuffCellUiDto buffUiDto, int lifeTime)
         {
             title.text = buffUiDto.title;
-            // lifeCount.text = buffUiDto.lifeCount.ToString();
+            lifeCount.text = lifeTime.ToString();
             buffImage.sprite = buffUiDto.buffImage;
         }
     }
