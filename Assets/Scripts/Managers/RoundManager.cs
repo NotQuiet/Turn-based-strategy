@@ -91,6 +91,7 @@ namespace Managers
 
         private void NextRound()
         {
+            OnRoundEnd();
             _currentRound++;
             SetCurrentRound();
             _playersTurn.Restart();
@@ -112,6 +113,14 @@ namespace Managers
             foreach (var controller in _gameControllers)
             {
                 controller.Restart();
+            }
+        }
+
+        private void OnRoundEnd()
+        {
+            foreach (var controller in _gameControllers)
+            {
+                controller.RoundEnd();
             }
         }
     }

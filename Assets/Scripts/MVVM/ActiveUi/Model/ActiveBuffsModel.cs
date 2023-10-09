@@ -9,6 +9,7 @@ namespace MVVM.ActiveUi.Model
     {
         private ActiveBuffsController _buffsController;
         public ReactiveCommand<BuffConfigDto> GetBuff = new();
+        public ReactiveCommand OnRoundEnd = new();
 
         public ActiveBuffsModel(ActiveBuffsController controller)
         {
@@ -20,9 +21,14 @@ namespace MVVM.ActiveUi.Model
             base.Subscribe(() =>
             {
                 _buffsController.OnGetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
+                _buffsController.OnRoundEnd.Subscribe(_ => RoundEnd()).AddTo(Disposable);
             });
         }
 
+        private void RoundEnd()
+        {
+            OnRoundEnd.Execute();
+        }
 
         private void OnGetBuff(BuffConfigDto config)
         {

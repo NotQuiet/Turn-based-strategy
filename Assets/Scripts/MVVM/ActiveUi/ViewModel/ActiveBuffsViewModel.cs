@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using DTO.Configurations;
 using Factories;
@@ -24,11 +25,14 @@ namespace MVVM.ActiveUi.ViewModel
 
         private GenericPool<BuffCell> _buffPool;
 
+        private List<BuffCell> _activeBuffs = new();
+
         protected override void Subscribe(Action onSubscribe)
         {
             base.Subscribe(() =>
             {
                 Model.GetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
+                Model.OnRoundEnd.Subscribe(OnGetBuff).AddTo(Disposable);
             });
         }
 
@@ -50,6 +54,18 @@ namespace MVVM.ActiveUi.ViewModel
 
             var buffUi = _uiBuffsData.buffsList.FirstOrDefault(d => d.title == config.title);
             cell.InitializeUi(buffUi, config.lifeTime);
+            
+            _activeBuffs.Add(cell);
+        }
+
+        private void OnRoundEnd()
+        {
+            
+        }
+
+        private void OnBuffEnd()
+        {
+            
         }
 
         private void SetPool()
