@@ -12,10 +12,5 @@ namespace MVVM.Core
         {
             
         }
-        
-        public virtual void Restart()
-        {
-            
-        }
     }
 }

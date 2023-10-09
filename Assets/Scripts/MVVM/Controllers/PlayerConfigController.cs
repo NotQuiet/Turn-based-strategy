@@ -18,5 +18,12 @@ namespace MVVM.Controllers
         {
             InitializeSliders.Execute(_startData);
         }
+
+        public override void Restart()
+        {
+            // base.Restart();
+            
+            OnInitialize();
+        }
     }
 }

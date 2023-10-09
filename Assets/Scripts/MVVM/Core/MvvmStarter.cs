@@ -27,15 +27,7 @@ namespace MVVM.Core
         {
             _isInitialized = false;
         }
-        
-        public void RestartViews()
-        {
-            foreach (var view in views)
-            {
-                view.Restart();
-            }
-        }
-        
+
         protected virtual void CreateControllers()
         {
             

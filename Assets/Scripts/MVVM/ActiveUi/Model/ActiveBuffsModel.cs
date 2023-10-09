@@ -10,6 +10,7 @@ namespace MVVM.ActiveUi.Model
         private ActiveBuffsController _buffsController;
         public ReactiveCommand<BuffConfigDto> GetBuff = new();
         public ReactiveCommand OnRoundEnd = new();
+        public ReactiveCommand OnRestart = new();
 
         public ActiveBuffsModel(ActiveBuffsController controller)
         {
@@ -22,12 +23,19 @@ namespace MVVM.ActiveUi.Model
             {
                 _buffsController.OnGetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
                 _buffsController.OnRoundEnd.Subscribe(_ => RoundEnd()).AddTo(Disposable);
+
+                _buffsController.OnRestart.Subscribe(_ => Restart()).AddTo(Disposable);
             });
         }
 
         public void BuffEnd(string title)
         {
             _buffsController.RemoveBuff(title);
+        }
+
+        private void Restart()
+        {
+            OnRestart.Execute();
         }
 
         private void RoundEnd()

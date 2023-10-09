@@ -34,6 +34,7 @@ namespace MVVM.ActiveUi.ViewModel
             {
                 Model.GetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
                 Model.OnRoundEnd.Subscribe(_ => OnRoundEnd()).AddTo(Disposable);
+                Model.OnRestart.Subscribe(_ => OnRestart()).AddTo(Disposable);
             });
         }
 
@@ -61,6 +62,12 @@ namespace MVVM.ActiveUi.ViewModel
 
         private List<string> _titlesToRemove = new();
 
+        private void OnRestart()
+        {
+            _buffPool.SetActiveCellsToFalse();
+            _activeBuffs.Clear();
+        }
+        
         private void OnRoundEnd()
         {
             _titlesToRemove = new();

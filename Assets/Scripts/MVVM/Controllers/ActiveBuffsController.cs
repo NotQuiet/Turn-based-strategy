@@ -9,9 +9,7 @@ namespace MVVM.Controllers
     public class ActiveBuffsController : ModelsController
     {
         private BuffsConfigDataSo _buffsConfigDataSo;
-
         public Dictionary<string, BuffConfigDto> CurrentBuffs { get; private set; } = new();
-
         public ActiveBuffsController(BuffsConfigDataSo buffsConfigDataSo)
         {
             _buffsConfigDataSo = buffsConfigDataSo;
@@ -48,6 +46,13 @@ namespace MVVM.Controllers
             var buff = CurrentBuffs[key];
             CurrentBuffs.Remove(key);
             OnEndBuff.Execute(buff);
+        }
+
+        public override void Restart()
+        {
+            base.Restart();
+            
+            CurrentBuffs.Clear();
         }
     }
 }

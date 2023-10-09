@@ -14,7 +14,6 @@ namespace MVVM.Controllers
         
         public virtual void Restart()
         {
-            Debug.Log($"Restart controller {GetType().Name}");
             OnRestart.Execute();
         }
         
