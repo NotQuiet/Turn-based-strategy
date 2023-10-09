@@ -6,7 +6,8 @@ namespace Enums
         {
             Health,
             Armor,
-            Vampirism
+            Vampirism,
+            Damage
         }
     }
 }

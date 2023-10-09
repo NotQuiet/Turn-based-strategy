@@ -25,3 +25,7 @@ MonoBehaviour:
     data:
       maxValue: 100
       currentValue: 0
+  - playerConfigurationType: 3
+    data:
+      maxValue: 20
+      currentValue: 20
