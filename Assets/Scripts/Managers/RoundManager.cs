@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DTO.Matchmaking;
 using MVVM.Controllers;
@@ -21,7 +20,7 @@ namespace Managers
         
         private int _currentRound = 1;
         
-        private void Start()
+        private void Awake()
         {
             starterInitializer.OnControllersInitialized.Subscribe(OnControllersInitialized).AddTo(_disposable);
         }
@@ -29,11 +28,26 @@ namespace Managers
         private void OnControllersInitialized(List<ModelsController> controllers)
         {
             _gameControllers = controllers;
+            
+            SubscribesOnControllers();
+        }
+
+        private void SubscribesOnControllers()
+        {
+            foreach (var controller in _gameControllers)
+            {
+                if (controller is AttackController attackController)
+                {
+                    attackController.OnAttack.Subscribe(_ => OnPlayersTurn()).AddTo(_disposable);
+                }
+            }
         }
 
         private void OnPlayersTurn()
         {
             _playersTurn.OnPlayersTurn();
+
+            Debug.Log("On player turn");
             
             if(_playersTurn.RoundIsEnd())
                 NextRound();
@@ -43,9 +57,10 @@ namespace Managers
         {
             _currentRound++;
             SetCurrentRound();
+            _playersTurn.Restart();
         }
 
-        public void RestartRound()
+        public void Restart()
         {
             _playersTurn.Restart();
             RestartControllers();

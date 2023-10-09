@@ -109,6 +109,8 @@ namespace MVVM.Starters
             }
 
             OnControllersInitialized.Execute(_controllers);
+
+            Debug.Log("OnControllersInitialized");
         }
     }
 }

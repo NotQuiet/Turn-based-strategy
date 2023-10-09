@@ -6,17 +6,9 @@ namespace MVVM.Starters
     public class StarterInitializer : MonoBehaviour
     {
         private MvvmStarter[] _starters;
-        private void Awake()
+        private void Start()
         {
             InitializeMvvm();
-        }
-
-        public void Restart()
-        {
-            foreach (var starter in _starters)
-            {
-                starter.RestartViews();
-            }
         }
 
         private void InitializeMvvm()
