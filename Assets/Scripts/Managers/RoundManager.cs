@@ -101,6 +101,9 @@ namespace Managers
         {
             _playersTurn.Restart();
             RestartControllers();
+            _currentRound = 1;
+            SetCurrentRound();
+            ActivateFirst();
         }
 
         private void SetCurrentRound()
