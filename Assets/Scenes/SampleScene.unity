@@ -1093,6 +1093,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1139095297}
     m_Modifications:
+    - target: {fileID: 681091976527690529, guid: ecf045120c3ff4805bb30ae403984db4,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.6117647
+      objectReference: {fileID: 0}
     - target: {fileID: 5110571976803443422, guid: ecf045120c3ff4805bb30ae403984db4,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1707,7 +1712,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundCounter: {fileID: 1308257570}
-  starterInitializer: {fileID: 1390517363}
+  leftStarterInitializer: {fileID: 1390517363}
+  rightStarterInitializer: {fileID: 1564471346}
   leftPanel: {fileID: 1632603219}
   rightPanel: {fileID: 1780109409}
 --- !u!1 &1149681713 stripped
