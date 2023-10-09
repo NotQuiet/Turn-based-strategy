@@ -11,25 +11,37 @@ namespace Managers
     public class RoundManager : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI roundCounter;
-        [SerializeField] private PlayerUiMvvmStarter starterInitializer;
+        [SerializeField] private PlayerUiMvvmStarter leftStarterInitializer;
+        [SerializeField] private PlayerUiMvvmStarter rightStarterInitializer;
 
-        private CompositeDisposable _disposable = new();
+        [SerializeField] private PlayerUiController leftPanel;
+        [SerializeField] private PlayerUiController rightPanel;
         
         private readonly PlayersTurnDto _playersTurn = new();
-        private List<ModelsController> _gameControllers;
+        private CompositeDisposable _disposable = new();
+        private List<ModelsController> _gameControllers = new ();
         
         private int _currentRound = 1;
+
+        private int timeInit = 0;
         
         private void Awake()
         {
-            starterInitializer.OnControllersInitialized.Subscribe(OnControllersInitialized).AddTo(_disposable);
+            leftStarterInitializer.OnControllersInitialized.Subscribe(OnControllersInitialized).AddTo(_disposable);
+            rightStarterInitializer.OnControllersInitialized.Subscribe(OnControllersInitialized).AddTo(_disposable);
         }
 
         private void OnControllersInitialized(List<ModelsController> controllers)
         {
-            _gameControllers = controllers;
+            foreach (var controller in controllers)
+            {
+                _gameControllers.Add(controller);
+            }
+
+            timeInit++;
             
-            SubscribesOnControllers();
+            if(timeInit > 1)
+                SubscribesOnControllers();
         }
 
         private void SubscribesOnControllers()
@@ -47,10 +59,34 @@ namespace Managers
         {
             _playersTurn.OnPlayersTurn();
 
-            Debug.Log("On player turn");
-            
             if(_playersTurn.RoundIsEnd())
                 NextRound();
+            
+            ActivateUi();
+        }
+
+        private void ActivateUi()
+        {
+            if (_playersTurn.FirstIsReady())
+            {
+                ActivateSecond();
+            }
+            else
+            {
+                ActivateFirst();
+            }
+        }
+
+        private void ActivateFirst()
+        {
+            leftPanel.Activate();
+            rightPanel.Deactivate();
+        }
+
+        private void ActivateSecond()
+        {
+            leftPanel.Deactivate();
+            rightPanel.Activate();
         }
 
         private void NextRound()

@@ -20,5 +20,10 @@ namespace DTO.Matchmaking
         {
             _firstPlayerReady = _secondPlayerReady = false;
         }
+
+        public bool FirstIsReady()
+        {
+            return _firstPlayerReady;
+        }
     }
 }
