@@ -10,10 +10,5 @@ namespace DTO.Configurations
         public int vampirismDecrease;
 
         public int vampirismValue;
-
-        public static AttackDataDto operator +(BuffConfigDto buff)
-        {
-            
-        }
     }
 }

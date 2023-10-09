@@ -10,7 +10,7 @@ namespace MVVM.Controllers
     {
         private BuffsConfigDataSo _buffsConfigDataSo;
 
-        private Dictionary<string, BuffConfigDto> _currentBuffs = new();
+        public Dictionary<string, BuffConfigDto> CurrentBuffs { get; private set; } = new();
 
         public ActiveBuffsController(BuffsConfigDataSo buffsConfigDataSo)
         {
@@ -18,15 +18,33 @@ namespace MVVM.Controllers
         }
 
         public ReactiveCommand<BuffConfigDto> OnGetBuff = new();
+        public ReactiveCommand MaximumNumbersOfBuffs = new();
 
         public void SetNewBuff()
         {
-            BuffConfigDto newBuff;
+            if (CurrentBuffs.Count >= 2)
+            {
+                MaximumNumbersOfBuffs.Execute();
+                return;
+            }
             
-            int r = Random.Range(0, _buffsConfigDataSo.buffsList.Count);
-            newBuff = _buffsConfigDataSo.buffsList[r];
+            BuffConfigDto newBuff;
+
+            do
+            {
+                int r = Random.Range(0, _buffsConfigDataSo.buffsList.Count);
+                newBuff = _buffsConfigDataSo.buffsList[r];
+                
+            } while (CurrentBuffs.ContainsKey(newBuff.title));
+
+            CurrentBuffs.Add(newBuff.title, newBuff);
 
             OnGetBuff.Execute(newBuff);
+        }
+
+        public void RemoveBuff(string key)
+        {
+            CurrentBuffs.Remove(key);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace MVVM.Starters
         
         private PlayerConfigController _configController;
         private ActiveBuffsController _buffsController;
+        private AttackController _attackController;
 
         private List<ModelsController> _controllers;
 
@@ -23,6 +24,7 @@ namespace MVVM.Starters
         {
             _configController = new PlayerConfigController(dataSo);
             _buffsController = new ActiveBuffsController(buffsSo);
+            _attackController = new AttackController();
             
             _controllers = new List<ModelsController>
             {
@@ -62,7 +64,7 @@ namespace MVVM.Starters
                 
                 if (view is AttackView attackView)
                 {
-                    var model = new AttackModel();
+                    var model = new AttackModel(_buffsController, _configController, _attackController);
                     var viewModel = new AttackViewModel(model);
                     
                     attackView.Init(viewModel);
