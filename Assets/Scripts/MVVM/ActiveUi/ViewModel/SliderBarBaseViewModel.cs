@@ -37,7 +37,7 @@ namespace MVVM.ActiveUi.ViewModel
         {
             OnEndBuff.Execute(buff);
         }
-
+        
         private void InitializeSlider(BasePlayerConfig config)
         {
             Initialize.Execute((config.data, config.playerConfigurationType));

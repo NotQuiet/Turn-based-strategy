@@ -31,7 +31,7 @@ namespace MVVM.ActiveUi.Model
         {
             base.Subscribe(() =>
             {
-                _playerConfigController.InitializeSliders.Subscribe(SetBaseAttack).AddTo(Disposable);
+                _playerConfigController.InitializePLayerBaseConfig.Subscribe(SetBaseAttack).AddTo(Disposable);
             });
         }
 

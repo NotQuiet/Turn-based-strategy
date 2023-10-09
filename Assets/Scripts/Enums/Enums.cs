@@ -9,5 +9,11 @@ namespace Enums
             Vampirism,
             Damage
         }
+        
+        public enum PlayerOriented
+        {
+            Left, 
+            Right
+        }
     }
 }

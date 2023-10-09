@@ -11,28 +11,27 @@ namespace MVVM.ActiveUi.Model
     {
         private PlayerConfigController _configController;
         private ActiveBuffsController _buffsController;
+        private AttackController _attackController;
 
         public ReactiveCommand<BasePlayerConfig> OnSetConfig = new();
         public ReactiveCommand<BuffConfigDto> OnGetBuff = new();
         public ReactiveCommand<BuffConfigDto> OnEndBuff = new();
-        public ReactiveCommand OnRestart = new();
 
-        public SliderBarBaseModel(PlayerConfigController configController, ActiveBuffsController buffsController)
+        public SliderBarBaseModel(PlayerConfigController configController, ActiveBuffsController buffsController,
+            AttackController attackController)
         {
             _configController = configController;
             _buffsController = buffsController;
-            
+            _attackController = attackController;
         }
 
         protected override void Subscribe(Action onSubscribe)
         {
             base.Subscribe(() =>
             {
-                _configController.InitializeSliders.Subscribe(InitializeSliders).AddTo(Disposable);
+                _configController.InitializePLayerBaseConfig.Subscribe(InitializeSliders).AddTo(Disposable);
                 _buffsController.OnGetBuff.Subscribe(OnBuff).AddTo(Disposable);
                 _buffsController.OnEndBuff.Subscribe(EndBuff).AddTo(Disposable);
-
-                // _buffsController.OnRestart.Subscribe(_ => Restart()).AddTo(Disposable);
             });
         }
 
@@ -45,11 +44,7 @@ namespace MVVM.ActiveUi.Model
         {
             OnEndBuff.Execute(buff);
         }
-        private void Restart()
-        {
-            OnRestart.Execute();
-        }
-        
+
         private void InitializeSliders(PlayerDataConfigurationSo data)
         {
             foreach (var config in data.playerConfigurations)

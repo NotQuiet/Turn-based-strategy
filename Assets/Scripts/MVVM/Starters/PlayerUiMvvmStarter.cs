@@ -45,7 +45,7 @@ namespace MVVM.Starters
             {
                 if (view is HealthBarView healthBarView)
                 {
-                    var model = new SliderBarBaseModel(_configController, _buffsController);
+                    var model = new SliderBarBaseModel(_configController, _buffsController, _attackController);
                     var viewModel = new SliderBarBaseViewModel(model);
 
                     diVm = viewModel;
