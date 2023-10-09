@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e335695-59bb-4aba-bc51-3621f8237e09" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ActiveBuffsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ActiveBuffsModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/SliderBarBaseModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/SliderBarBaseModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ActiveBuffsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ActiveBuffsViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ModelsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ModelsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/MvvmStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/MvvmStarter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/ViewBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Core/ViewBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ApplyBuffModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ApplyBuffModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/ApplyBuffView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/View/ApplyBuffView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ApplyBuffViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ApplyBuffViewModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
