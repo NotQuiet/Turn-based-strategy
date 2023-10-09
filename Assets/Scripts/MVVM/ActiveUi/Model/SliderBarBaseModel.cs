@@ -14,6 +14,7 @@ namespace MVVM.ActiveUi.Model
 
         public ReactiveCommand<BasePlayerConfig> OnSetConfig = new();
         public ReactiveCommand<BuffConfigDto> OnGetBuff = new();
+        public ReactiveCommand<BuffConfigDto> OnEndBuff = new();
 
         public SliderBarBaseModel(PlayerConfigController configController, ActiveBuffsController buffsController)
         {
@@ -28,12 +29,18 @@ namespace MVVM.ActiveUi.Model
             {
                 _configController.InitializeSliders.Subscribe(InitializeSliders).AddTo(Disposable);
                 _buffsController.OnGetBuff.Subscribe(OnBuff).AddTo(Disposable);
+                _buffsController.OnEndBuff.Subscribe(EndBuff).AddTo(Disposable);
             });
         }
 
         private void OnBuff(BuffConfigDto buff)
         {
             OnGetBuff.Execute(buff);
+        }
+        
+        private void EndBuff(BuffConfigDto buff)
+        {
+            OnEndBuff.Execute(buff);
         }
 
         private void InitializeSliders(PlayerDataConfigurationSo data)

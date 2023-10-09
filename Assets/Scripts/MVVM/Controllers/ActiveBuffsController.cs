@@ -18,6 +18,7 @@ namespace MVVM.Controllers
         }
 
         public ReactiveCommand<BuffConfigDto> OnGetBuff = new();
+        public ReactiveCommand<BuffConfigDto> OnEndBuff = new();
         public ReactiveCommand MaximumNumbersOfBuffs = new();
 
         public void SetNewBuff()
@@ -44,7 +45,9 @@ namespace MVVM.Controllers
 
         public void RemoveBuff(string key)
         {
+            var buff = CurrentBuffs[key];
             CurrentBuffs.Remove(key);
+            OnEndBuff.Execute(buff);
         }
     }
 }
