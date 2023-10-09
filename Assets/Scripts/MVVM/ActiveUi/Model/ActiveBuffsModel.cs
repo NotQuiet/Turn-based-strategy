@@ -25,6 +25,11 @@ namespace MVVM.ActiveUi.Model
             });
         }
 
+        public void BuffEnd(string title)
+        {
+            _buffsController.RemoveBuff(title);
+        }
+
         private void RoundEnd()
         {
             OnRoundEnd.Execute();

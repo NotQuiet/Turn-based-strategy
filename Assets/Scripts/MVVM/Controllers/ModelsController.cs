@@ -15,10 +15,12 @@ namespace MVVM.Controllers
         public virtual void Restart()
         {
             Debug.Log($"Restart controller {GetType().Name}");
+            OnRestart.Execute();
         }
         
         public virtual void RoundEnd()
         {
+            OnRoundEnd.Execute();
         }
     }
 }

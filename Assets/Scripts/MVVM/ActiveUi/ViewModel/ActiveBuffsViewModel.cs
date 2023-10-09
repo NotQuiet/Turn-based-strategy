@@ -25,14 +25,15 @@ namespace MVVM.ActiveUi.ViewModel
 
         private GenericPool<BuffCell> _buffPool;
 
-        private List<BuffCell> _activeBuffs = new();
+        // title - prefab
+        private Dictionary<string, BuffCell> _activeBuffs = new();
 
         protected override void Subscribe(Action onSubscribe)
         {
             base.Subscribe(() =>
             {
                 Model.GetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
-                Model.OnRoundEnd.Subscribe(OnGetBuff).AddTo(Disposable);
+                Model.OnRoundEnd.Subscribe(_ => OnRoundEnd()).AddTo(Disposable);
             });
         }
 
@@ -53,19 +54,38 @@ namespace MVVM.ActiveUi.ViewModel
             var cell = _buffPool.GetCell(_buffCellFactory, _grid);
 
             var buffUi = _uiBuffsData.buffsList.FirstOrDefault(d => d.title == config.title);
-            cell.InitializeUi(buffUi, config.lifeTime);
+            cell.InitializeUi(buffUi, OnBuffEnd, config.lifeTime);
             
-            _activeBuffs.Add(cell);
+            _activeBuffs.Add(buffUi.title, cell);
         }
+
+        private List<string> _titlesToRemove = new();
 
         private void OnRoundEnd()
         {
+            _titlesToRemove = new();
             
+            foreach (var buff in _activeBuffs)
+            {
+                buff.Value.OnRoundEnd();
+            }
+
+            foreach (var title in _titlesToRemove)
+            {
+                RemoveBuffs(title);
+            }
         }
 
-        private void OnBuffEnd()
+        private void OnBuffEnd(string title)
         {
-            
+            _titlesToRemove.Add(title);
+        }
+
+        private void RemoveBuffs(string title)
+        {
+            _activeBuffs[title].gameObject.SetActive(false);
+            _activeBuffs.Remove(title);
+            Model.BuffEnd(title);
         }
 
         private void SetPool()
