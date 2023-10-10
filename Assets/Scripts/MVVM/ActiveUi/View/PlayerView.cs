@@ -20,6 +20,7 @@ namespace MVVM.ActiveUi.View
             base.Subscribe();
 
             ViewModel.OnGetDamage.Subscribe(OnGetDamage).AddTo(Disposable);
+            ViewModel.OnGetHeal.Subscribe(_ => OnGetHeal()).AddTo(Disposable);
             ViewModel.Restart.Subscribe(_ => Restart()).AddTo(Disposable);
         }
 
@@ -43,6 +44,17 @@ namespace MVVM.ActiveUi.View
             
             DOTween.Sequence()
                 .Append(playerMaterial.material.DOColor(Color.yellow, 0.3f))
+                .Append(playerMaterial.material.DOColor(Color.white, 0.3f));
+        }
+
+        private void OnGetHeal()
+        {
+            DOTween.Sequence()
+                .Append(transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.3f))
+                .Append(transform.DOScale(Vector3.one, 0.3f));
+            
+            DOTween.Sequence()
+                .Append(playerMaterial.material.DOColor(Color.green, 0.3f))
                 .Append(playerMaterial.material.DOColor(Color.white, 0.3f));
         }
 

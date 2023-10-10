@@ -6,6 +6,7 @@ using MVVM.Controllers;
 using ScriptableObjects;
 using Services;
 using UniRx;
+using UnityEngine;
 
 namespace MVVM.ActiveUi.Model
 {
@@ -25,6 +26,8 @@ namespace MVVM.ActiveUi.Model
         
         // is die
         public ReactiveCommand<bool> GetDamage = new ();
+        
+        public ReactiveCommand GetHeal = new ();
         
         public ReactiveCommand Restart = new ();
 
@@ -110,14 +113,22 @@ namespace MVVM.ActiveUi.Model
 
         private void OnGetDamage((Enums.Enums.PlayerOriented oriented, AttackDataDto attackDataDto) data)
         {
+            var attackDto =  _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
+
             if(data.oriented == _oriented)
             {
                 // heal here
+                var heal = _damagePerformerService.HealByVampirism(attackDto.Item1, attackDto.Item2);
+
+                if (!heal.Item1) return;
+                
+                _playerStat = heal.Item2;
+                _playerConfigController.SetNewStat(_playerStat);
+                GetHeal.Execute();
             }
             else
             {
-                _playerStat = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
-            
+                _playerStat = attackDto.Item1;
                 _playerConfigController.SetNewStat(_playerStat);
             
                 GetDamage.Execute(_playerStat.health <= 0);

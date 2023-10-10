@@ -13,6 +13,7 @@ namespace MVVM.ActiveUi.ViewModel
         }
 
         public ReactiveCommand<bool> OnGetDamage = new ();
+        public ReactiveCommand OnGetHeal = new ();
         public ReactiveCommand Restart = new ();
 
         protected override void Subscribe(Action onSubscribe)
@@ -20,6 +21,7 @@ namespace MVVM.ActiveUi.ViewModel
             base.Subscribe(() =>
             {
                 Model.GetDamage.Subscribe(GetDamage).AddTo(Disposable);
+                Model.GetHeal.Subscribe(_ => GetHeal()).AddTo(Disposable);
                 Model.Restart.Subscribe(_ => OnRestart()).AddTo(Disposable);
             });
         }
@@ -37,6 +39,11 @@ namespace MVVM.ActiveUi.ViewModel
         private void GetDamage(bool isDie)
         {
             OnGetDamage.Execute(isDie);
+        }
+        
+        private void GetHeal()
+        {
+            OnGetHeal.Execute();
         }
         
         private void OnRestart()
