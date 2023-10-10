@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using DTO.Configurations;
 using Factories;
 using MVVM.ActiveUi.Model;
@@ -24,6 +25,7 @@ namespace MVVM.ActiveUi.ViewModel
         private Transform _grid;
 
         private GenericPool<BuffCell> _buffPool;
+        private List<string> _titlesToRemove = new();
 
         // title - prefab
         private Dictionary<string, BuffCell> _activeBuffs = new();
@@ -53,15 +55,14 @@ namespace MVVM.ActiveUi.ViewModel
         private void OnGetBuff(BuffConfigDto config)
         {
             var cell = _buffPool.GetCell(_buffCellFactory, _grid);
-
             var buffUi = _uiBuffsData.buffsList.FirstOrDefault(d => d.title == config.title);
             cell.InitializeUi(buffUi, OnBuffEnd, config.lifeTime);
             
+            ShowAnimation(cell.transform);
+            
             _activeBuffs.Add(buffUi.title, cell);
         }
-
-        private List<string> _titlesToRemove = new();
-
+        
         private void OnRestart()
         {
             _buffPool.SetActiveCellsToFalse();
@@ -90,7 +91,8 @@ namespace MVVM.ActiveUi.ViewModel
 
         private void RemoveBuffs(string title)
         {
-            _activeBuffs[title].gameObject.SetActive(false);
+            HideAnimation(_activeBuffs[title].transform);
+            // _activeBuffs[title].gameObject.SetActive(false);
             _activeBuffs.Remove(title);
             Model.BuffEnd(title);
         }
@@ -99,6 +101,27 @@ namespace MVVM.ActiveUi.ViewModel
         {
             _buffPool = new GenericPool<BuffCell>();
             _buffPool.SetPoolSize(5, _buffCellFactory);
+        }
+
+        private void ShowAnimation(Transform transform)
+        {
+            transform.localScale = Vector3.zero;
+            
+            DOTween.Sequence()
+                .Append(transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f))
+                .Append(transform.DOScale(Vector3.one, 0.1f));
+
+        }
+
+        private void HideAnimation(Transform transform)
+        {
+            DOTween.Sequence()
+                .Append(transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f))
+                .Append(transform.DOScale(Vector3.zero, 0.1f))
+                .AppendCallback(() =>
+                {
+                    transform.gameObject.SetActive(false);
+                });
         }
     }
 }
