@@ -9,8 +9,8 @@ namespace Services
         {
             foreach (var buff in buffs)
             {
-                if (buff.damageMultiplication > 0)
-                    attackDataDto.damage *= buff.damageMultiplication;
+                // if (buff.damageMultiplication > 0)
+                //     attackDataDto.damage *= buff.damageMultiplication;
 
                 attackDataDto.armorDecrease += buff.armorToEnemy;
                 attackDataDto.vampirismValue += buff.vampirismToSelf;

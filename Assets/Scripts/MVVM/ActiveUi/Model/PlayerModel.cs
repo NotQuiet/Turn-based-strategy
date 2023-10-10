@@ -18,6 +18,7 @@ namespace MVVM.ActiveUi.Model
         private ActiveBuffsController _activeBuffsController;
 
         private DamagePerformerService _damagePerformerService;
+        private BuffPerformerService _buffPerformerService;
 
         private Enums.Enums.PlayerOriented _oriented;
         private FightManager _fightManager;
@@ -27,7 +28,8 @@ namespace MVVM.ActiveUi.Model
         {
             _playerStat = new PlayerStatDto();
             _damagePerformerService = new DamagePerformerService();
-
+            _buffPerformerService = new BuffPerformerService();
+            
             _attackController = attackController;
             _playerConfigController = playerConfigController;
             _activeBuffsController = activeBuffsController;
@@ -39,6 +41,10 @@ namespace MVVM.ActiveUi.Model
         {
             _attackController.OnAttack.Subscribe(MakeAttack).AddTo(Disposable);
             _playerConfigController.InitializePLayerBaseConfig.Subscribe(InitializeBaseConfig).AddTo(Disposable);
+            
+            _activeBuffsController.OnGetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
+            
+            _activeBuffsController.OnEndBuff.Subscribe(OnEndBuff).AddTo(Disposable);
         }
         
         public void InitializePlayer(Enums.Enums.PlayerOriented oriented, FightManager fightManager)
@@ -57,19 +63,27 @@ namespace MVVM.ActiveUi.Model
                 {
                     case Enums.Enums.PlayerConfigurationType.Health:
                         _playerStat.health = config.data.currentValue;
+                        _playerStat.maxHealth = config.data.maxValue;
                         break;
                     case Enums.Enums.PlayerConfigurationType.Damage:
+                        _playerStat.damage = config.data.currentValue;
+                        _playerStat.maxDamage = config.data.maxValue;
+
                         break;
                     case Enums.Enums.PlayerConfigurationType.Armor:
                         _playerStat.armor = config.data.currentValue;
+                        _playerStat.maxArmor = config.data.maxValue;
                         break;
                     case Enums.Enums.PlayerConfigurationType.Vampirism:
                         _playerStat.vampirism = config.data.currentValue;
+                        _playerStat.maxVampirism = config.data.maxValue;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
+            
+            _playerConfigController.SetNewStat(_playerStat);
         }
 
         private void MakeAttack(AttackDataDto attackDataDto)
@@ -81,8 +95,21 @@ namespace MVVM.ActiveUi.Model
         {
             if(data.oriented == _oriented) return;
             
-            _playerStat = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto, 
-                _activeBuffsController.CurrentBuffs.Values);
+            _playerStat = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
+            
+            _playerConfigController.SetNewStat(_playerStat);
+        }
+
+        private void OnGetBuff(BuffConfigDto buff)
+        {
+            _playerStat = _buffPerformerService.SetBuff(buff, _playerStat);
+            
+            _playerConfigController.SetNewStat(_playerStat);
+        }
+        
+        private void OnEndBuff(BuffConfigDto buff)
+        {
+            _playerStat = _buffPerformerService.EndBuff(buff, _playerStat);
             
             _playerConfigController.SetNewStat(_playerStat);
         }

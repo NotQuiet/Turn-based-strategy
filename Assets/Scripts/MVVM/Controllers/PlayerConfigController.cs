@@ -28,8 +28,6 @@ namespace MVVM.Controllers
 
         public override void Restart()
         {
-            // base.Restart();
-            
             OnInitialize();
         }
     }

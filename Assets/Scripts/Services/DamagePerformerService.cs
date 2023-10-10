@@ -10,23 +10,13 @@ namespace Services
         private PlayerStatDto _currentStat;
         
         public PlayerStatDto DamageCalculation(PlayerStatDto currentStat, 
-            AttackDataDto attackDataDto,
-            IEnumerable<BuffConfigDto> activeBuffs)
+            AttackDataDto attackDataDto)
         {
             _currentStat = currentStat;
             
-            CalculateBuffs(activeBuffs);
             CalculateDamage(attackDataDto);
 
             return _currentStat;
-        }
-
-        private void CalculateBuffs(IEnumerable<BuffConfigDto> activeBuffs)
-        {
-            foreach (var buff in activeBuffs)
-            {
-                _currentStat.armor += buff.armorToSelf;
-            }
         }
 
         private void CalculateDamage(AttackDataDto attackDataDto)

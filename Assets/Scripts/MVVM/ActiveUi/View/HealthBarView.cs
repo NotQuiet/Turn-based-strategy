@@ -7,9 +7,11 @@ namespace MVVM.ActiveUi.View
         protected override void OnSetNewStat(PlayerStatDto newStat)
         {
             base.OnSetNewStat(newStat);
-
+            
+            slider.maxValue = newStat.maxHealth;
             slider.value = newStat.health;
-            sliderValue.text = newStat.health.ToString();
+            
+            sliderValue.text = $"{newStat.health}/{newStat.maxHealth}";
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using DTO.Configurations;
+using DTO.Matchmaking;
 using MVVM.Controllers;
-using ScriptableObjects;
 using Services;
 using UniRx;
 using UnityEngine;
@@ -16,6 +16,8 @@ namespace MVVM.ActiveUi.Model
         private PlayerConfigController _playerConfigController;
         private AttackController _attackController;
 
+        // public ReactiveCommand<PlayerStatDto> OnSetStat = new();
+
         public AttackModel(ActiveBuffsController activeBuffsController, 
             PlayerConfigController playerConfigController,
             AttackController attackController)
@@ -25,13 +27,13 @@ namespace MVVM.ActiveUi.Model
             _attackController = attackController;
         }
 
-        private int _baseDamage;
+        private int _damage;
 
         protected override void Subscribe(Action onSubscribe)
         {
             base.Subscribe(() =>
             {
-                _playerConfigController.InitializePLayerBaseConfig.Subscribe(SetBaseAttack).AddTo(Disposable);
+                _playerConfigController.OnSetNewStat.Subscribe(SetBaseAttack).AddTo(Disposable);
             });
         }
 
@@ -47,17 +49,14 @@ namespace MVVM.ActiveUi.Model
         
         private void CreateAttackData()
         {
-            _attackData.damage = _baseDamage;
+            _attackData.damage = _damage;
             _attackData = _attackDataService.SetAttackData(_attackData, _buffsController.CurrentBuffs.Values);
         }
 
-        private void SetBaseAttack(PlayerDataConfigurationSo config)
+        private void SetBaseAttack(PlayerStatDto config)
         {
-            foreach (var data in config.playerConfigurations)
-            {
-                if (data.playerConfigurationType == Enums.Enums.PlayerConfigurationType.Damage)
-                    _baseDamage = data.data.currentValue;
-            }
+            _damage = config.damage;
+            // OnSetStat.Execute(config);
         }
 
        

@@ -21,20 +21,7 @@ namespace MVVM.ActiveUi.View
         {
             base.Subscribe();
 
-            ViewModel.Initialize.Subscribe(SetSliderValue).AddTo(Disposable);
             ViewModel.OnSetNewStat.Subscribe(OnSetNewStat).AddTo(Disposable);
-        }
-
-        protected virtual void SetSliderValue((ConfigData, Enums.Enums.PlayerConfigurationType) cort)
-        {
-            if(playerConfigurationType != cort.Item2) return;
-
-            Debug.Log($"Initialize slider {playerConfigurationType}");
-            
-            slider.maxValue = cort.Item1.maxValue;
-            slider.value = cort.Item1.currentValue;
-
-            sliderValue.text = $"{cort.Item1.currentValue}/{cort.Item1.maxValue}";
         }
 
         protected virtual void OnSetNewStat(PlayerStatDto newStat)

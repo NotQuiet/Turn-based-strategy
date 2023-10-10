@@ -1,14 +1,18 @@
-using DTO.UI;
+using DTO.Matchmaking;
+using TMPro;
+using UnityEngine;
 
 namespace MVVM.ActiveUi.View
 {
     public class DamageBarView : SliderBarBaseView
     {
-        protected override void SetSliderValue((ConfigData, Enums.Enums.PlayerConfigurationType) cort)
+        [SerializeField] private TextMeshProUGUI damageValueText;
+        
+        protected override void OnSetNewStat(PlayerStatDto newStat)
         {
-            if(playerConfigurationType != cort.Item2) return;
-            
-            sliderValue.text = $"{cort.Item1.currentValue}";
+            base.OnSetNewStat(newStat);
+
+            damageValueText.text = newStat.damage.ToString();
         }
     }
 }
