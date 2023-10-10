@@ -13,7 +13,7 @@ namespace MVVM.ActiveUi.Model
     public class PlayerModel : Core.Model
     {
         private PlayerStatDto _playerStat;
-        
+
         private AttackController _attackController;
         private PlayerConfigController _playerConfigController;
         private ActiveBuffsController _activeBuffsController;
@@ -23,13 +23,13 @@ namespace MVVM.ActiveUi.Model
 
         private Enums.Enums.PlayerOriented _oriented;
         private FightManager _fightManager;
-        
+
         // is die
-        public ReactiveCommand<bool> GetDamage = new ();
-        
-        public ReactiveCommand GetHeal = new ();
-        
-        public ReactiveCommand Restart = new ();
+        public ReactiveCommand<bool> GetDamage = new();
+
+        public ReactiveCommand GetHeal = new();
+
+        public ReactiveCommand Restart = new();
 
         public PlayerModel(AttackController attackController, PlayerConfigController playerConfigController,
             ActiveBuffsController activeBuffsController)
@@ -37,7 +37,7 @@ namespace MVVM.ActiveUi.Model
             _playerStat = new PlayerStatDto();
             _damagePerformerService = new DamagePerformerService();
             _buffPerformerService = new BuffPerformerService();
-            
+
             _attackController = attackController;
             _playerConfigController = playerConfigController;
             _activeBuffsController = activeBuffsController;
@@ -49,25 +49,25 @@ namespace MVVM.ActiveUi.Model
         {
             _attackController.OnAttack.Subscribe(MakeAttack).AddTo(Disposable);
             _playerConfigController.InitializePLayerBaseConfig.Subscribe(InitializeBaseConfig).AddTo(Disposable);
-            
+
             _activeBuffsController.OnGetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
             _activeBuffsController.OnEndBuff.Subscribe(OnEndBuff).AddTo(Disposable);
 
             _activeBuffsController.OnRestart.Subscribe(_ => OnRestart()).AddTo(Disposable);
         }
-        
+
         public void InitializePlayer(Enums.Enums.PlayerOriented oriented, FightManager fightManager)
         {
             _oriented = oriented;
             _fightManager = fightManager;
 
             _fightManager.OnGetDamage.Subscribe(OnGetDamage).AddTo(Disposable);
+            _fightManager.OnGetHeal.Subscribe(OnGetHeal).AddTo(Disposable);
         }
 
         public void Die()
         {
             OnPlayerDie();
-
         }
 
         private void InitializeBaseConfig(PlayerDataConfigurationSo baseConfig)
@@ -97,7 +97,7 @@ namespace MVVM.ActiveUi.Model
                         throw new ArgumentOutOfRangeException();
                 }
             }
-            
+
             _playerConfigController.SetNewStat(_playerStat);
         }
 
@@ -113,39 +113,43 @@ namespace MVVM.ActiveUi.Model
 
         private void OnGetDamage((Enums.Enums.PlayerOriented oriented, AttackDataDto attackDataDto) data)
         {
-            var attackDto =  _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
+            if(data.oriented == _oriented) return;
 
-            if(data.oriented == _oriented)
-            {
-                // heal here
-                var heal = _damagePerformerService.HealByVampirism(attackDto.Item1, attackDto.Item2);
+            var attackDto = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
 
-                if (!heal.Item1) return;
-                
-                _playerStat = heal.Item2;
-                _playerConfigController.SetNewStat(_playerStat);
-                GetHeal.Execute();
-            }
-            else
-            {
-                _playerStat = attackDto.Item1;
-                _playerConfigController.SetNewStat(_playerStat);
+            _playerStat = attackDto.Item1;
+            _playerConfigController.SetNewStat(_playerStat);
             
-                GetDamage.Execute(_playerStat.health <= 0);
-            }
+            _fightManager.MakeHeal(_oriented, attackDto.Item2);
+            
+            GetDamage.Execute(_playerStat.health <= 0);
+        }
+
+        private void OnGetHeal((Enums.Enums.PlayerOriented oriented, AttackDataDto attackDataDto) data)
+        {
+            if(data.oriented == _oriented) return;
+
+            // heal here
+            var heal = _damagePerformerService.HealByVampirism(_playerStat, data.attackDataDto);
+
+            if (!heal.Item1) return;
+
+            _playerStat = heal.Item2;
+            _playerConfigController.SetNewStat(_playerStat);
+            GetHeal.Execute();
         }
 
         private void OnGetBuff(BuffConfigDto buff)
         {
             _playerStat = _buffPerformerService.SetBuff(buff, _playerStat);
-            
+
             _playerConfigController.SetNewStat(_playerStat);
         }
-        
+
         private void OnEndBuff(BuffConfigDto buff)
         {
             _playerStat = _buffPerformerService.EndBuff(buff, _playerStat);
-            
+
             _playerConfigController.SetNewStat(_playerStat);
         }
 
