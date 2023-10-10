@@ -1,5 +1,6 @@
 using DTO.Configurations;
 using DTO.Matchmaking;
+using UnityEngine;
 
 namespace Services
 {
@@ -18,6 +19,30 @@ namespace Services
                 _playerStat.damage /= buff.damageMultiplication;
 
             return _playerStat;
+        }
+        
+        private void EndArmor(BuffConfigDto buff)
+        {
+            if (_playerStat.armor - Mathf.Abs(buff.armorToSelf) > 0)
+            {
+                _playerStat.armor -= Mathf.Abs(buff.armorToSelf);
+            }
+            else
+            {
+                _playerStat.armor = 0;
+            }
+        }
+        
+        private void EndVampire(BuffConfigDto buff)
+        {
+            if (_playerStat.vampirism - Mathf.Abs(buff.vampirismToSelf) > 0)
+            {
+                _playerStat.vampirism -= Mathf.Abs(buff.vampirismToSelf);
+            }
+            else
+            {
+                _playerStat.vampirism = 0;
+            }
         }
         
         public PlayerStatDto SetBuff(BuffConfigDto buff, PlayerStatDto playerStat)
@@ -65,30 +90,6 @@ namespace Services
             }
             
             _playerStat.vampirism += buff.vampirismToSelf;
-        }
-        
-        private void EndArmor(BuffConfigDto buff)
-        {
-            if (_playerStat.armor - buff.armorToSelf > 0)
-            {
-                _playerStat.armor -= buff.armorToSelf;
-            }
-            else
-            {
-                _playerStat.armor = 0;
-            }
-        }
-        
-        private void EndVampire(BuffConfigDto buff)
-        {
-            if (_playerStat.vampirism - buff.vampirismToSelf > 0)
-            {
-                _playerStat.vampirism -= buff.vampirismToSelf;
-            }
-            else
-            {
-                _playerStat.vampirism = 0;
-            }
         }
     }
 }

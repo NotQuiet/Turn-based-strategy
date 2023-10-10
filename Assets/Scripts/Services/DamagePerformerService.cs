@@ -73,6 +73,9 @@ namespace Services
 
         private void DecreaseStats()
         {
+            Debug.Log($"On get damage decrease stats: decrease armor - {_attackDataDto.armorDecrease}" +
+                      $" _currentStat.vampirism - {_attackDataDto.vampirismDecrease}");
+            
             _currentStat.armor -= Mathf.Abs(_attackDataDto.armorDecrease);
             _currentStat.vampirism -= Mathf.Abs(_attackDataDto.vampirismDecrease);
             
