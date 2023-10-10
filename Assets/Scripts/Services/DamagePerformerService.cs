@@ -14,6 +14,7 @@ namespace Services
         {
             _currentStat = currentStat;
             
+            DecreaseStats(attackDataDto);
             CalculateDamage(attackDataDto);
 
             return _currentStat;
@@ -21,10 +22,6 @@ namespace Services
 
         private void CalculateDamage(AttackDataDto attackDataDto)
         {
-            _currentStat.armor -= Mathf.Abs(attackDataDto.armorDecrease);
-
-            if (_currentStat.armor < 0) _currentStat.armor = 0;
-
             if (_currentStat.armor != 0)
             {
                 double damageReduction = (double)_currentStat.armor / 100.0; // Преобразование брони в десятичный процент
@@ -38,6 +35,15 @@ namespace Services
             }
 
             if (_currentStat.health < 0) _currentStat.health = 0;
+        }
+
+        private void DecreaseStats(AttackDataDto attackDataDto)
+        {
+            _currentStat.armor -= Mathf.Abs(attackDataDto.armorDecrease);
+            _currentStat.vampirism -= Mathf.Abs(attackDataDto.vampirismDecrease);
+            
+            if (_currentStat.armor < 0) _currentStat.armor = 0;
+            if (_currentStat.vampirism < 0) _currentStat.vampirism = 0;
         }
     }
 }

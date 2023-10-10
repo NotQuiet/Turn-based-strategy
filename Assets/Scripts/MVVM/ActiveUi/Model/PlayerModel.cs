@@ -110,13 +110,18 @@ namespace MVVM.ActiveUi.Model
 
         private void OnGetDamage((Enums.Enums.PlayerOriented oriented, AttackDataDto attackDataDto) data)
         {
-            if(data.oriented == _oriented) return;
+            if(data.oriented == _oriented)
+            {
+                // heal here
+            }
+            else
+            {
+                _playerStat = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
             
-            _playerStat = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
+                _playerConfigController.SetNewStat(_playerStat);
             
-            _playerConfigController.SetNewStat(_playerStat);
-            
-            GetDamage.Execute(_playerStat.health <= 0);
+                GetDamage.Execute(_playerStat.health <= 0);
+            }
         }
 
         private void OnGetBuff(BuffConfigDto buff)

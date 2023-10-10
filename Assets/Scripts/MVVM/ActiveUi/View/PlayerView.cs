@@ -42,7 +42,7 @@ namespace MVVM.ActiveUi.View
                 .Append(transform.DOScale(Vector3.one, 0.3f));
             
             DOTween.Sequence()
-                .Append(playerMaterial.material.DOColor(Color.green, 0.3f))
+                .Append(playerMaterial.material.DOColor(Color.yellow, 0.3f))
                 .Append(playerMaterial.material.DOColor(Color.white, 0.3f));
         }
 
