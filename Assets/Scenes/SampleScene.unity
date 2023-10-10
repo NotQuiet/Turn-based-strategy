@@ -779,6 +779,7 @@ GameObject:
   - component: {fileID: 358726793}
   - component: {fileID: 358726792}
   - component: {fileID: 358726791}
+  - component: {fileID: 358726794}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -864,6 +865,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358726789}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &358726794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358726789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048eca8b309248bba34df00157d96aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOriented: 1
+  fightManager: {fileID: 251823434}
 --- !u!114 &372262102 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4089985164256816724, guid: ecf045120c3ff4805bb30ae403984db4,
@@ -2163,6 +2178,7 @@ MonoBehaviour:
   - {fileID: 1633481150}
   - {fileID: 43811167}
   - {fileID: 1149681714}
+  - {fileID: 1785712444}
   viewsToShowOnStart:
   - {fileID: 733399999}
   - {fileID: 1338973607}
@@ -2171,6 +2187,7 @@ MonoBehaviour:
   - {fileID: 1633481150}
   - {fileID: 43811167}
   - {fileID: 1149681714}
+  - {fileID: 1785712444}
   dataSo: {fileID: 11400000, guid: 119ce21338cda41cabf14e399a8bc3d6, type: 2}
   buffsSo: {fileID: 11400000, guid: b6a2816c51d374d88a062d55721d66d7, type: 2}
 --- !u!114 &1391960134 stripped
@@ -2302,6 +2319,7 @@ MonoBehaviour:
   - {fileID: 908279205}
   - {fileID: 1416021046}
   - {fileID: 1584354176}
+  - {fileID: 358726794}
   viewsToShowOnStart:
   - {fileID: 127492927}
   - {fileID: 250847084}
@@ -2310,6 +2328,7 @@ MonoBehaviour:
   - {fileID: 908279205}
   - {fileID: 1416021046}
   - {fileID: 1584354176}
+  - {fileID: 358726794}
   dataSo: {fileID: 11400000, guid: 119ce21338cda41cabf14e399a8bc3d6, type: 2}
   buffsSo: {fileID: 11400000, guid: b6a2816c51d374d88a062d55721d66d7, type: 2}
 --- !u!1001 &1584354174
@@ -2733,6 +2752,7 @@ GameObject:
   - component: {fileID: 1785712443}
   - component: {fileID: 1785712442}
   - component: {fileID: 1785712441}
+  - component: {fileID: 1785712444}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -2818,6 +2838,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785712439}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1785712444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785712439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048eca8b309248bba34df00157d96aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOriented: 0
+  fightManager: {fileID: 251823434}
 --- !u!114 &1795125600 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1044124258657340403, guid: ecf045120c3ff4805bb30ae403984db4,

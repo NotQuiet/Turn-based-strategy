@@ -90,6 +90,14 @@ namespace MVVM.Starters
                     
                     activeBuffsView.Init(viewModel);
                 }
+
+                if (view is PlayerView player)
+                {
+                    var model = new PlayerModel(_attackController, _configController, _buffsController);
+                    var viewModel = new PlayerViewModel(model);
+                    
+                    player.Init(viewModel);
+                }
                 
             }
         }

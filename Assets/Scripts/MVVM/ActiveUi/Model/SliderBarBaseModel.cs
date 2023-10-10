@@ -1,5 +1,6 @@
 using System;
 using DTO.Configurations;
+using DTO.Matchmaking;
 using MVVM.Controllers;
 using ScriptableObjects;
 using UniRx;
@@ -16,6 +17,7 @@ namespace MVVM.ActiveUi.Model
         public ReactiveCommand<BasePlayerConfig> OnSetConfig = new();
         public ReactiveCommand<BuffConfigDto> OnGetBuff = new();
         public ReactiveCommand<BuffConfigDto> OnEndBuff = new();
+        public ReactiveCommand<PlayerStatDto> OnSetNewStat = new();
 
         public SliderBarBaseModel(PlayerConfigController configController, ActiveBuffsController buffsController,
             AttackController attackController)
@@ -30,9 +32,15 @@ namespace MVVM.ActiveUi.Model
             base.Subscribe(() =>
             {
                 _configController.InitializePLayerBaseConfig.Subscribe(InitializeSliders).AddTo(Disposable);
+                _configController.OnSetNewStat.Subscribe(SetNewStat).AddTo(Disposable);
                 _buffsController.OnGetBuff.Subscribe(OnBuff).AddTo(Disposable);
                 _buffsController.OnEndBuff.Subscribe(EndBuff).AddTo(Disposable);
             });
+        }
+
+        private void SetNewStat(PlayerStatDto playerStatDto)
+        {
+            OnSetNewStat.Execute(playerStatDto);
         }
 
         private void OnBuff(BuffConfigDto buff)

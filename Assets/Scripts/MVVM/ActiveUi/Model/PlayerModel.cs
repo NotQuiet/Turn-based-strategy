@@ -83,6 +83,8 @@ namespace MVVM.ActiveUi.Model
             
             _playerStat = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto, 
                 _activeBuffsController.CurrentBuffs.Values);
+            
+            _playerConfigController.SetNewStat(_playerStat);
         }
     }
 }

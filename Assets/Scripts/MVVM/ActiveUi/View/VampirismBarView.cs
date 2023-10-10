@@ -1,5 +1,6 @@
 using System.Globalization;
 using DTO.Configurations;
+using DTO.Matchmaking;
 using UniRx;
 
 namespace MVVM.ActiveUi.View
@@ -12,6 +13,14 @@ namespace MVVM.ActiveUi.View
             
             ViewModel.OnGetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
             ViewModel.OnEndBuff.Subscribe(OnEndBuff).AddTo(Disposable);
+        }
+        
+        protected override void OnSetNewStat(PlayerStatDto newStat)
+        {
+            base.OnSetNewStat(newStat);
+
+            slider.value = newStat.vampirism;
+            sliderValue.text = newStat.vampirism.ToString();
         }
 
         private void OnGetBuff(BuffConfigDto buff)

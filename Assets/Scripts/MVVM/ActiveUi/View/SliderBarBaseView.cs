@@ -1,4 +1,5 @@
 using DTO.Configurations;
+using DTO.Matchmaking;
 using DTO.UI;
 using MVVM.ActiveUi.Model;
 using MVVM.ActiveUi.ViewModel;
@@ -21,6 +22,7 @@ namespace MVVM.ActiveUi.View
             base.Subscribe();
 
             ViewModel.Initialize.Subscribe(SetSliderValue).AddTo(Disposable);
+            ViewModel.OnSetNewStat.Subscribe(OnSetNewStat).AddTo(Disposable);
         }
 
         protected virtual void SetSliderValue((ConfigData, Enums.Enums.PlayerConfigurationType) cort)
@@ -33,6 +35,11 @@ namespace MVVM.ActiveUi.View
             slider.value = cort.Item1.currentValue;
 
             sliderValue.text = $"{cort.Item1.currentValue}/{cort.Item1.maxValue}";
+        }
+
+        protected virtual void OnSetNewStat(PlayerStatDto newStat)
+        {
+            
         }
     }
 }
