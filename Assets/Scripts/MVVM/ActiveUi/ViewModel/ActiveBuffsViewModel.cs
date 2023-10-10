@@ -92,7 +92,6 @@ namespace MVVM.ActiveUi.ViewModel
         private void RemoveBuffs(string title)
         {
             HideAnimation(_activeBuffs[title].transform);
-            // _activeBuffs[title].gameObject.SetActive(false);
             _activeBuffs.Remove(title);
             Model.BuffEnd(title);
         }
