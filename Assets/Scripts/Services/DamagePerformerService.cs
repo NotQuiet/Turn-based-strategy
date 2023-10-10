@@ -36,6 +36,8 @@ namespace Services
             {
                 _currentStat.health -= attackDataDto.damage;
             }
+
+            if (_currentStat.health < 0) _currentStat.health = 0;
         }
     }
 }

@@ -22,6 +22,11 @@ namespace MVVM.ActiveUi.Model
 
         private Enums.Enums.PlayerOriented _oriented;
         private FightManager _fightManager;
+        
+        // is die
+        public ReactiveCommand<bool> GetDamage = new ();
+        
+        public ReactiveCommand Restart = new ();
 
         public PlayerModel(AttackController attackController, PlayerConfigController playerConfigController,
             ActiveBuffsController activeBuffsController)
@@ -43,8 +48,9 @@ namespace MVVM.ActiveUi.Model
             _playerConfigController.InitializePLayerBaseConfig.Subscribe(InitializeBaseConfig).AddTo(Disposable);
             
             _activeBuffsController.OnGetBuff.Subscribe(OnGetBuff).AddTo(Disposable);
-            
             _activeBuffsController.OnEndBuff.Subscribe(OnEndBuff).AddTo(Disposable);
+
+            _activeBuffsController.OnRestart.Subscribe(_ => OnRestart()).AddTo(Disposable);
         }
         
         public void InitializePlayer(Enums.Enums.PlayerOriented oriented, FightManager fightManager)
@@ -53,6 +59,12 @@ namespace MVVM.ActiveUi.Model
             _fightManager = fightManager;
 
             _fightManager.OnGetDamage.Subscribe(OnGetDamage).AddTo(Disposable);
+        }
+
+        public void Die()
+        {
+            OnPlayerDie();
+
         }
 
         private void InitializeBaseConfig(PlayerDataConfigurationSo baseConfig)
@@ -86,6 +98,11 @@ namespace MVVM.ActiveUi.Model
             _playerConfigController.SetNewStat(_playerStat);
         }
 
+        private void OnRestart()
+        {
+            Restart.Execute();
+        }
+
         private void MakeAttack(AttackDataDto attackDataDto)
         {
             _fightManager.MakeAttack(_oriented, attackDataDto);
@@ -98,6 +115,8 @@ namespace MVVM.ActiveUi.Model
             _playerStat = _damagePerformerService.DamageCalculation(_playerStat, data.attackDataDto);
             
             _playerConfigController.SetNewStat(_playerStat);
+            
+            GetDamage.Execute(_playerStat.health <= 0);
         }
 
         private void OnGetBuff(BuffConfigDto buff)
@@ -112,6 +131,11 @@ namespace MVVM.ActiveUi.Model
             _playerStat = _buffPerformerService.EndBuff(buff, _playerStat);
             
             _playerConfigController.SetNewStat(_playerStat);
+        }
+
+        private void OnPlayerDie()
+        {
+            _fightManager.PlayerDie();
         }
     }
 }

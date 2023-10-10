@@ -879,6 +879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOriented: 1
   fightManager: {fileID: 251823434}
+  playerMaterial: {fileID: 358726792}
 --- !u!114 &372262102 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4089985164256816724, guid: ecf045120c3ff4805bb30ae403984db4,
@@ -1872,6 +1873,7 @@ MonoBehaviour:
   rightStarterInitializer: {fileID: 1564471346}
   leftPanel: {fileID: 1632603219}
   rightPanel: {fileID: 1780109409}
+  fightManager: {fileID: 251823434}
 --- !u!1 &1149681713 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5524001998728789815, guid: dfa4d727d071945bcab5257f229b50fa,
@@ -1920,6 +1922,7 @@ MonoBehaviour:
   playerConfigurationType: 3
   slider: {fileID: 0}
   sliderValue: {fileID: 1391960134}
+  damageValueText: {fileID: 1391960134}
 --- !u!1 &1307204771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,6 +2855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOriented: 0
   fightManager: {fileID: 251823434}
+  playerMaterial: {fileID: 1785712442}
 --- !u!114 &1795125600 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1044124258657340403, guid: ecf045120c3ff4805bb30ae403984db4,
@@ -3059,6 +3063,7 @@ MonoBehaviour:
   playerConfigurationType: 3
   slider: {fileID: 0}
   sliderValue: {fileID: 372262102}
+  damageValueText: {fileID: 372262102}
 --- !u!1 &2045017614
 GameObject:
   m_ObjectHideFlags: 0

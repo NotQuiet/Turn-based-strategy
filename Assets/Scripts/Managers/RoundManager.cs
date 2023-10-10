@@ -17,18 +17,31 @@ namespace Managers
         [SerializeField] private PlayerUiController leftPanel;
         [SerializeField] private PlayerUiController rightPanel;
         
+        [SerializeField] private FightManager fightManager;
+        
         private readonly PlayersTurnDto _playersTurn = new();
         private CompositeDisposable _disposable = new();
         private List<ModelsController> _gameControllers = new ();
         
         private int _currentRound = 1;
 
-        private int timeInit = 0;
+        private int _timeInit = 0;
         
         private void Awake()
         {
             leftStarterInitializer.OnControllersInitialized.Subscribe(OnControllersInitialized).AddTo(_disposable);
             rightStarterInitializer.OnControllersInitialized.Subscribe(OnControllersInitialized).AddTo(_disposable);
+
+            fightManager.OnMatchEnd.Subscribe(_ => Restart()).AddTo(_disposable);
+        }
+        
+        public void Restart()
+        {
+            _playersTurn.Restart();
+            RestartControllers();
+            _currentRound = 1;
+            SetCurrentRound();
+            ActivateFirst();
         }
 
         private void OnControllersInitialized(List<ModelsController> controllers)
@@ -38,9 +51,9 @@ namespace Managers
                 _gameControllers.Add(controller);
             }
 
-            timeInit++;
+            _timeInit++;
             
-            if(timeInit > 1)
+            if(_timeInit > 1)
                 SubscribesOnControllers();
         }
 
@@ -95,15 +108,6 @@ namespace Managers
             _currentRound++;
             SetCurrentRound();
             _playersTurn.Restart();
-        }
-
-        public void Restart()
-        {
-            _playersTurn.Restart();
-            RestartControllers();
-            _currentRound = 1;
-            SetCurrentRound();
-            ActivateFirst();
         }
 
         private void SetCurrentRound()
