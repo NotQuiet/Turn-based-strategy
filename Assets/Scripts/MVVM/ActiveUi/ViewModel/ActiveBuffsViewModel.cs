@@ -25,10 +25,10 @@ namespace MVVM.ActiveUi.ViewModel
         private Transform _grid;
 
         private GenericPool<BuffCell> _buffPool;
-        private List<string> _titlesToRemove = new();
+        private List<Enums.Enums.BuffTitle> _titlesToRemove = new();
 
         // title - prefab
-        private Dictionary<string, BuffCell> _activeBuffs = new();
+        private Dictionary<Enums.Enums.BuffTitle, BuffCell> _activeBuffs = new();
 
         protected override void Subscribe(Action onSubscribe)
         {
@@ -84,12 +84,12 @@ namespace MVVM.ActiveUi.ViewModel
             }
         }
 
-        private void OnBuffEnd(string title)
+        private void OnBuffEnd(Enums.Enums.BuffTitle title)
         {
             _titlesToRemove.Add(title);
         }
 
-        private void RemoveBuffs(string title)
+        private void RemoveBuffs(Enums.Enums.BuffTitle title)
         {
             HideAnimation(_activeBuffs[title].transform);
             _activeBuffs.Remove(title);

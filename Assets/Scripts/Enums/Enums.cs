@@ -21,6 +21,15 @@ namespace Enums
             OnYourself, 
             OnEnemy
         }
+        
+        public enum BuffTitle
+        {
+            DoubleDamage, 
+            ArmorSelf,
+            ArmorDestruction,
+            VampirismSelf,
+            VampirismDecrease
+        }
 
         public enum BuffKind
         {

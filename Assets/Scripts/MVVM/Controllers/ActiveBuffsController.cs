@@ -3,6 +3,7 @@ using Buffs;
 using ScriptableObjects;
 using UniRx;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MVVM.Controllers
 {
@@ -11,15 +12,46 @@ namespace MVVM.Controllers
         public ActiveBuffsController(BuffsConfigDataSo buffsConfigDataSo)
         {
             _buffsConfigDataSo = buffsConfigDataSo;
+            CreateBuffsPool();
         }
-        public Dictionary<string, BaseBuff> CurrentBuffs { get; private set; } = new();
+
+        public Dictionary<Enums.Enums.BuffTitle, BaseBuff> CurrentBuffs { get; private set; } = new();
 
         private readonly BuffsConfigDataSo _buffsConfigDataSo;
         public readonly ReactiveCommand<BaseBuff> OnGetBuff = new();
         public readonly ReactiveCommand<BaseBuff> OnEndBuff = new();
         public readonly ReactiveCommand MaximumNumbersOfBuffs = new();
 
+        private List<BaseBuff> _buffsPool = new();
+
         private bool _canAddBuff = true;
+
+        private void CreateBuffsPool()
+        {
+            foreach (var buff in _buffsConfigDataSo.buffsList)
+            {
+                switch (buff.title)
+                {
+                    case Enums.Enums.BuffTitle.DoubleDamage:
+                        _buffsPool.Add(new DamageBuff(buff));
+                        break;
+                    case Enums.Enums.BuffTitle.ArmorSelf:
+                        _buffsPool.Add(new ArmorSelf(buff));
+                        break;
+                    case Enums.Enums.BuffTitle.ArmorDestruction:
+                        _buffsPool.Add(new ArmorDestruction(buff));
+                        break;
+                    case Enums.Enums.BuffTitle.VampirismSelf:
+                        _buffsPool.Add(new VampirismSelf(buff));
+                        break;
+                    case Enums.Enums.BuffTitle.VampirismDecrease:
+                        _buffsPool.Add(new VampirismDecrease(buff));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         public void SetNewBuff()
         {
@@ -28,7 +60,7 @@ namespace MVVM.Controllers
                 MaximumNumbersOfBuffs.Execute();
                 return;
             }
-            
+
             if (CurrentBuffs.Count >= 2)
             {
                 MaximumNumbersOfBuffs.Execute();
@@ -39,8 +71,15 @@ namespace MVVM.Controllers
 
             do
             {
-                int r = Random.Range(0, _buffsConfigDataSo.buffsList.Count);
-                newBuff = _buffsConfigDataSo.buffsList[r];
+                int r = Random.Range(0, _buffsPool.Count);
+                newBuff = _buffsPool[r];
+
+                foreach (var buffs in _buffsPool)
+                {
+                    Debug.Log(buffs.GetType().Name);
+                }
+                
+                
             } while (CurrentBuffs.ContainsKey(newBuff.title));
 
             CurrentBuffs.Add(newBuff.title, newBuff);
@@ -49,7 +88,7 @@ namespace MVVM.Controllers
             _canAddBuff = false;
         }
 
-        public void RemoveBuff(string key)
+        public void RemoveBuff(Enums.Enums.BuffTitle key)
         {
             var buff = CurrentBuffs[key];
             CurrentBuffs.Remove(key);

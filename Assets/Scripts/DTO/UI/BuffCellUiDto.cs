@@ -8,7 +8,7 @@ namespace DTO.UI
     [Serializable]
     public class BuffCellUiDto
     {
-        public string title;
+        public Enums.Enums.BuffTitle title;
 
         public Sprite buffImage;
     }

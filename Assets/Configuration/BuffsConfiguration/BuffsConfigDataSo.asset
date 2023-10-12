@@ -13,33 +13,33 @@ MonoBehaviour:
   m_Name: BuffsConfigDataSo
   m_EditorClassIdentifier: 
   buffsList:
-  - title: Double damage
+  - title: 0
     buffType: 0
     data:
     - kind: 0
       value: 2
     lifeTime: 1
-  - title: Armor self
+  - title: 1
     buffType: 0
     data:
     - kind: 2
       value: 50
     lifeTime: 2
-  - title: Armor destruction
+  - title: 2
     buffType: 1
     data:
     - kind: 2
       value: -10
     lifeTime: 2
-  - title: Vampirism self
+  - title: 3
     buffType: 0
     data:
-    - kind: 2
-      value: -25
     - kind: 3
       value: 50
+    - kind: 2
+      value: -25
     lifeTime: 2
-  - title: Vampirism decrease
+  - title: 4
     buffType: 1
     data:
     - kind: 3

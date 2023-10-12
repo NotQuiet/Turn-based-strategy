@@ -28,7 +28,7 @@ namespace MVVM.ActiveUi.Model
             });
         }
 
-        public void BuffEnd(string title)
+        public void BuffEnd(Enums.Enums.BuffTitle title)
         {
             _buffsController.RemoveBuff(title);
         }

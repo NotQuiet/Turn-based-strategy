@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e335695-59bb-4aba-bc51-3621f8237e09" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/ArmorDestruction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/ArmorDestruction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/ArmorSelf.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/ArmorSelf.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/DamageBuff.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/DamageBuff.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/VampirismDecrease.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/VampirismDecrease.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/VampirismSelf.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/VampirismSelf.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-based strategy/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Configuration/BuffsConfiguration/BuffsConfigDataSo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configuration/BuffsConfiguration/BuffsConfigDataSo.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Configuration/BuffsConfiguration/BuffsUiDataSo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Configuration/BuffsConfiguration/BuffsUiDataSo.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buffs/BaseBuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buffs/BaseBuff.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/PlayerModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/PlayerModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/BuffPerformerService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/BuffPerformerService.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Services/DamagePerformerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Services/DamagePerformerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DTO/UI/BuffCellUiDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DTO/UI/BuffCellUiDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ActiveBuffsModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/Model/ActiveBuffsModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ActiveBuffsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/ActiveUi/ViewModel/ActiveBuffsViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MVVM/Controllers/ActiveBuffsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UiCells/Buffs/BuffCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UiCells/Buffs/BuffCell.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

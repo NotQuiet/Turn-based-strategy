@@ -14,13 +14,15 @@ namespace UiCells.Buffs
         
         [SerializeField] private Image buffImage;
 
-        private Action<string> _endLifetimeAction;
+        private Action<Enums.Enums.BuffTitle> _endLifetimeAction;
 
+        private Enums.Enums.BuffTitle _thisTitle;
         private int _currentLifeTime;
 
-        public void InitializeUi(BuffCellUiDto buffUiDto, Action<string> endLifeTimeAction, int lifeTime)
+        public void InitializeUi(BuffCellUiDto buffUiDto, Action<Enums.Enums.BuffTitle> endLifeTimeAction, int lifeTime)
         {
-            title.text = buffUiDto.title;
+            _thisTitle = buffUiDto.title;
+            title.text = buffUiDto.title.ToString();
             lifeCount.text = lifeTime.ToString();
             buffImage.sprite = buffUiDto.buffImage;
 
@@ -33,7 +35,7 @@ namespace UiCells.Buffs
         {
             if (_currentLifeTime <= 1)
             {
-                _endLifetimeAction(title.text);
+                _endLifetimeAction(_thisTitle);
             }
             else
             {
