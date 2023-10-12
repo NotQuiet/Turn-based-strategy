@@ -8,9 +8,13 @@ namespace Buffs
     {
         public override PlayerStatDto SetBuff(PlayerStatDto stat)
         {
-            foreach (var buffData in data.Where(buffData => buffData.kind == Enums.Enums.BuffKind.Vampirism))
+            foreach (var buffData in data)
             {
-                stat.vampirismDecrease += Mathf.Abs(buffData.value);
+                if (buffType == Enums.Enums.BuffType.OnEnemy)
+                {
+                    if(buffData.kind == Enums.Enums.BuffKind.Vampirism)
+                        stat.vampirismDecrease += Mathf.Abs(buffData.value);
+                }
             }
 
 
@@ -19,9 +23,13 @@ namespace Buffs
 
         public override PlayerStatDto RemoveBuff(PlayerStatDto stat)
         {
-            foreach (var buffData in data.Where(buffData => buffData.kind == Enums.Enums.BuffKind.Vampirism))
+            foreach (var buffData in data)
             {
-                stat.vampirismDecrease -= Mathf.Abs(buffData.value);
+                if (buffType == Enums.Enums.BuffType.OnEnemy)
+                {
+                    if(buffData.kind == Enums.Enums.BuffKind.Vampirism)
+                        stat.vampirismDecrease -= Mathf.Abs(buffData.value);
+                }
             }
 
             return CheckThresholds(stat);
