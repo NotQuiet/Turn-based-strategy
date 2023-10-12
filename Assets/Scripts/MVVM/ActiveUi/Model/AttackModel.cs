@@ -1,4 +1,5 @@
 using System;
+using Buffs;
 using DTO.Configurations;
 using DTO.Matchmaking;
 using MVVM.Controllers;
@@ -26,9 +27,7 @@ namespace MVVM.ActiveUi.Model
             _playerConfigController = playerConfigController;
             _attackController = attackController;
         }
-
-        private int _damage;
-
+        
         protected override void Subscribe(Action onSubscribe)
         {
             base.Subscribe(() =>
@@ -41,24 +40,23 @@ namespace MVVM.ActiveUi.Model
         {
             Debug.Log("On attack!");
             
-            CreateAttackData();
+            // CreateAttackData();
             _attackController.Attack(_attackData);
 
-            _attackData = new();
+            // _attackData = new();
         }
         
         private void CreateAttackData()
         {
-            _attackData.damage = _damage;
             _attackData = _attackDataService.SetAttackData(_attackData, _buffsController.CurrentBuffs.Values);
         }
 
         private void SetBaseAttack(PlayerStatDto config)
         {
-            _damage = config.damage;
-            // OnSetStat.Execute(config);
+            _attackData.damage = config.damage;
+            _attackData.armorDecrease = config.armorDecrease;
+            _attackData.vampirismDecrease = config.vampirismDecrease;
+            _attackData.vampirismValue = config.vampirism;
         }
-
-       
     }
 }

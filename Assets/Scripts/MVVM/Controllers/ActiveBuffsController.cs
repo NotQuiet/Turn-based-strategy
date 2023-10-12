@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DTO.Configurations;
+using Buffs;
 using ScriptableObjects;
 using UniRx;
 using UnityEngine;
@@ -12,11 +12,11 @@ namespace MVVM.Controllers
         {
             _buffsConfigDataSo = buffsConfigDataSo;
         }
-        public Dictionary<string, BuffConfigDto> CurrentBuffs { get; private set; } = new();
+        public Dictionary<string, BaseBuff> CurrentBuffs { get; private set; } = new();
 
         private readonly BuffsConfigDataSo _buffsConfigDataSo;
-        public readonly ReactiveCommand<BuffConfigDto> OnGetBuff = new();
-        public readonly ReactiveCommand<BuffConfigDto> OnEndBuff = new();
+        public readonly ReactiveCommand<BaseBuff> OnGetBuff = new();
+        public readonly ReactiveCommand<BaseBuff> OnEndBuff = new();
         public readonly ReactiveCommand MaximumNumbersOfBuffs = new();
 
         private bool _canAddBuff = true;
@@ -35,7 +35,7 @@ namespace MVVM.Controllers
                 return;
             }
 
-            BuffConfigDto newBuff;
+            BaseBuff newBuff;
 
             do
             {

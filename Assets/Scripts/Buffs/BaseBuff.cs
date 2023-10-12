@@ -1,30 +1,147 @@
 using System;
+using System.Collections.Generic;
 using DTO.Matchmaking;
+using UnityEngine;
 
 namespace Buffs
 {
     [Serializable]
-    public abstract class BaseBuff
+    public class BaseBuff
     {
         public string title;
         public Enums.Enums.BuffType buffType;
-        public int value;
+        public List<BuffData> data;
         public int lifeTime;
 
-        public virtual PlayerStatDto SetBuff(PlayerStatDto stat)
+        public PlayerStatDto SetBuff(PlayerStatDto stat)
         {
-            return new PlayerStatDto();
+            foreach (var buffData in data)
+            {
+                switch (buffType)
+                {
+                    case Enums.Enums.BuffType.OnYourself:
+                        switch (buffData.kind)
+                        {
+                            case Enums.Enums.BuffKind.Damage:
+                                stat.damage *= buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Armor:
+                                stat.armor += buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Health:
+                                stat.health += buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Vampirism:
+                                stat.vampirism += buffData.value;
+                                break;
+                            default:
+                                Debug.LogError("Cant find this kind");
+                                break;
+                        }
+                        break;
+                    case Enums.Enums.BuffType.OnEnemy:
+                        switch (buffData.kind)
+                        {
+                            case Enums.Enums.BuffKind.Damage:
+                                break;
+                            case Enums.Enums.BuffKind.Armor:
+                                stat.armorDecrease += buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Health:
+                                break;
+                            case Enums.Enums.BuffKind.Vampirism:
+                                stat.vampirismDecrease += buffData.value;
+                                break;
+                            default:
+                                Debug.LogError("Cant find this kind");
+                                break;
+                        }
+                        break;
+                    default:
+                        Debug.LogError("Wrong type!");
+                        break;
+                }
+                
+            }
+            
+            return CheckThresholds(stat);
         }
 
-        public virtual PlayerStatDto RemoveBuff(PlayerStatDto stat)
+        public PlayerStatDto RemoveBuff(PlayerStatDto stat)
         {
-            return new PlayerStatDto();
+            foreach (var buffData in data)
+            {
+                switch (buffType)
+                {
+                    case Enums.Enums.BuffType.OnYourself:
+                        switch (buffData.kind)
+                        {
+                            case Enums.Enums.BuffKind.Damage:
+                                stat.damage /= buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Armor:
+                                stat.armor -= buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Health:
+                                stat.health -= buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Vampirism:
+                                stat.vampirism -= buffData.value;
+                                break;
+                            default:
+                                Debug.LogError("Cant find this kind");
+                                break;
+                        }
+                        break;
+                    case Enums.Enums.BuffType.OnEnemy:
+                        switch (buffData.kind)
+                        {
+                            case Enums.Enums.BuffKind.Damage:
+                                break;
+                            case Enums.Enums.BuffKind.Armor:
+                                stat.armorDecrease -= buffData.value;
+                                break;
+                            case Enums.Enums.BuffKind.Health:
+                                break;
+                            case Enums.Enums.BuffKind.Vampirism:
+                                stat.vampirismDecrease -= buffData.value;
+                                break;
+                            default:
+                                Debug.LogError("Cant find this kind");
+                                break;
+                        }
+                        break;
+                    default:
+                        Debug.LogError("Wrong type!");
+                        break;
+                }
+            }
+            
+            return CheckThresholds(stat);
+        }
+
+        private PlayerStatDto CheckThresholds(PlayerStatDto stat)
+        {
+            if (stat.armor > stat.maxArmor)
+                stat.armor = stat.maxArmor;
+            
+            if (stat.armor <= 0)
+                stat.armor = 0;
+            
+            if (stat.vampirism > stat.maxVampirism)
+                stat.vampirism = stat.maxVampirism;
+            
+            if (stat.vampirism <= 0)
+                stat.vampirism = 0;
+
+            return stat;
         }
     }
 
     [Serializable]
     public class BuffData
     {
-        
+        public Enums.Enums.BuffKind kind;
+        public int value;
     }
 }

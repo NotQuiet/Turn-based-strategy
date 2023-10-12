@@ -11,7 +11,9 @@ namespace DTO.Matchmaking
         public int maxHealth;
         public int armor;
         public int maxArmor;
+        public int armorDecrease;
         public int vampirism;
         public int maxVampirism;
+        public int vampirismDecrease;
     }
 }

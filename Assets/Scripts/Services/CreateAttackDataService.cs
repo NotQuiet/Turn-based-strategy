@@ -1,22 +1,14 @@
 using System.Collections.Generic;
+using Buffs;
 using DTO.Configurations;
 
 namespace Services
 {
     public class CreateAttackDataService
     {
-        public AttackDataDto SetAttackData(AttackDataDto attackDataDto, IEnumerable<BuffConfigDto> buffs)
+        public AttackDataDto SetAttackData(AttackDataDto attackDataDto, IEnumerable<BaseBuff> buffs)
         {
-            foreach (var buff in buffs)
-            {
-                // if (buff.damageMultiplication > 0)
-                //     attackDataDto.damage *= buff.damageMultiplication;
-
-                attackDataDto.armorDecrease += buff.armorToEnemy;
-                attackDataDto.vampirismValue += buff.vampirismToSelf;
-                attackDataDto.vampirismDecrease += buff.vampirismToEnemy;
-            }
-
+         
             return attackDataDto;
         }
     }

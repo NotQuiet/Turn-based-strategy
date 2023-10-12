@@ -14,37 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffsList:
   - title: Double damage
-    damageMultiplication: 2
-    armorToSelf: 0
-    armorToEnemy: 0
-    vampirismToSelf: 0
-    vampirismToEnemy: 0
+    buffType: 0
+    data:
+    - kind: 0
+      value: 2
     lifeTime: 2
   - title: Armor self
-    damageMultiplication: 0
-    armorToSelf: 50
-    armorToEnemy: 0
-    vampirismToSelf: 0
-    vampirismToEnemy: 0
+    buffType: 0
+    data:
+    - kind: 2
+      value: 50
     lifeTime: 2
   - title: Armor destruction
-    damageMultiplication: 0
-    armorToSelf: 0
-    armorToEnemy: -10
-    vampirismToSelf: 0
-    vampirismToEnemy: 0
+    buffType: 1
+    data:
+    - kind: 2
+      value: -10
     lifeTime: 3
   - title: Vampirism self
-    damageMultiplication: 0
-    armorToSelf: -25
-    armorToEnemy: 0
-    vampirismToSelf: 50
-    vampirismToEnemy: 0
+    buffType: 0
+    data:
+    - kind: 2
+      value: -25
+    - kind: 3
+      value: 50
     lifeTime: 1
   - title: Vampirism decrease
-    damageMultiplication: 0
-    armorToSelf: 0
-    armorToEnemy: 0
-    vampirismToSelf: 0
-    vampirismToEnemy: -25
+    buffType: 1
+    data:
+    - kind: 3
+      value: -25
     lifeTime: 3

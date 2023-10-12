@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Buffs;
 using DG.Tweening;
-using DTO.Configurations;
 using Factories;
 using MVVM.ActiveUi.Model;
 using MVVM.Core;
@@ -52,7 +52,7 @@ namespace MVVM.ActiveUi.ViewModel
             _uiBuffsData = uiBuffs;
         }
 
-        private void OnGetBuff(BuffConfigDto config)
+        private void OnGetBuff(BaseBuff config)
         {
             var cell = _buffPool.GetCell(_buffCellFactory, _grid);
             var buffUi = _uiBuffsData.buffsList.FirstOrDefault(d => d.title == config.title);

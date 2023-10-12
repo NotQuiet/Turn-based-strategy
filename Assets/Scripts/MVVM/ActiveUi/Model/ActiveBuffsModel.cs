@@ -1,5 +1,5 @@
 using System;
-using DTO.Configurations;
+using Buffs;
 using MVVM.Controllers;
 using UniRx;
 
@@ -8,7 +8,7 @@ namespace MVVM.ActiveUi.Model
     public class ActiveBuffsModel : Core.Model
     {
         private ActiveBuffsController _buffsController;
-        public ReactiveCommand<BuffConfigDto> GetBuff = new();
+        public ReactiveCommand<BaseBuff> GetBuff = new();
         public ReactiveCommand OnRoundEnd = new();
         public ReactiveCommand OnRestart = new();
 
@@ -43,7 +43,7 @@ namespace MVVM.ActiveUi.Model
             OnRoundEnd.Execute();
         }
 
-        private void OnGetBuff(BuffConfigDto config)
+        private void OnGetBuff(BaseBuff config)
         {
             GetBuff.Execute(config);
         }

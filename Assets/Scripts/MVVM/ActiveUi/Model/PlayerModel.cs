@@ -1,4 +1,5 @@
 using System;
+using Buffs;
 using DTO.Configurations;
 using DTO.Matchmaking;
 using Managers;
@@ -139,17 +140,15 @@ namespace MVVM.ActiveUi.Model
             GetHeal.Execute();
         }
 
-        private void OnGetBuff(BuffConfigDto buff)
+        private void OnGetBuff(BaseBuff buff)
         {
-            _playerStat = _buffPerformerService.SetBuff(buff, _playerStat);
-
+            _playerStat = buff.SetBuff(_playerStat);
             _playerConfigController.SetNewStat(_playerStat);
         }
 
-        private void OnEndBuff(BuffConfigDto buff)
+        private void OnEndBuff(BaseBuff buff)
         {
-            _playerStat = _buffPerformerService.EndBuff(buff, _playerStat);
-
+            _playerStat = buff.RemoveBuff(_playerStat);
             _playerConfigController.SetNewStat(_playerStat);
         }
 

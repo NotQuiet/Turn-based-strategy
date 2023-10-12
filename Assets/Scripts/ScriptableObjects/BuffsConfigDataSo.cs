@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DTO.Configurations;
+using Buffs;
 using UnityEngine;
 
 namespace ScriptableObjects
@@ -7,6 +7,7 @@ namespace ScriptableObjects
     [CreateAssetMenu(menuName = "Buffs/BuffsConfigDataSo", fileName = "BuffsConfigDataSo")]
     public class BuffsConfigDataSo : ScriptableObject
     {
-        public List<BuffConfigDto> buffsList;
+        // public List<BuffConfigDto> buffsList;
+        public List<BaseBuff> buffsList;
     }
 }
