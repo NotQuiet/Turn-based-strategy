@@ -8,19 +8,27 @@ namespace Buffs
     {
         public override PlayerStatDto SetBuff(PlayerStatDto stat)
         {
-            foreach (var buffData in data.Where(d => d.kind == Enums.Enums.BuffKind.Armor))
+            foreach (var buffData in data)
             {
-                stat.armorDecrease += Mathf.Abs(buffData.value);
+                if (buffType == Enums.Enums.BuffType.OnEnemy)
+                {
+                    if(buffData.kind == Enums.Enums.BuffKind.Armor)
+                        stat.armorDecrease += Mathf.Abs(buffData.value);
+                }
             }
-
+            
             return CheckThresholds(stat);
         }
 
         public override PlayerStatDto RemoveBuff(PlayerStatDto stat)
         {
-            foreach (var buffData in data.Where(d => d.kind == Enums.Enums.BuffKind.Armor))
+            foreach (var buffData in data)
             {
-                stat.armorDecrease -= Mathf.Abs(buffData.value);
+                if (buffType == Enums.Enums.BuffType.OnEnemy)
+                {
+                    if(buffData.kind == Enums.Enums.BuffKind.Armor)
+                        stat.armorDecrease -= Mathf.Abs(buffData.value);
+                }
             }
 
             return CheckThresholds(stat);
