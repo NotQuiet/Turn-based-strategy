@@ -8,37 +8,45 @@ namespace MVVM.Controllers
 {
     public class ActiveBuffsController : ModelsController
     {
-        private BuffsConfigDataSo _buffsConfigDataSo;
-        public Dictionary<string, BuffConfigDto> CurrentBuffs { get; private set; } = new();
         public ActiveBuffsController(BuffsConfigDataSo buffsConfigDataSo)
         {
             _buffsConfigDataSo = buffsConfigDataSo;
         }
+        public Dictionary<string, BuffConfigDto> CurrentBuffs { get; private set; } = new();
 
-        public ReactiveCommand<BuffConfigDto> OnGetBuff = new();
-        public ReactiveCommand<BuffConfigDto> OnEndBuff = new();
-        public ReactiveCommand MaximumNumbersOfBuffs = new();
+        private readonly BuffsConfigDataSo _buffsConfigDataSo;
+        public readonly ReactiveCommand<BuffConfigDto> OnGetBuff = new();
+        public readonly ReactiveCommand<BuffConfigDto> OnEndBuff = new();
+        public readonly ReactiveCommand MaximumNumbersOfBuffs = new();
+
+        private bool _canAddBuff = true;
 
         public void SetNewBuff()
         {
-            if (CurrentBuffs.Count >= 2)
+            if (!_canAddBuff)
             {
                 MaximumNumbersOfBuffs.Execute();
                 return;
             }
             
+            if (CurrentBuffs.Count >= 2)
+            {
+                MaximumNumbersOfBuffs.Execute();
+                return;
+            }
+
             BuffConfigDto newBuff;
 
             do
             {
                 int r = Random.Range(0, _buffsConfigDataSo.buffsList.Count);
                 newBuff = _buffsConfigDataSo.buffsList[r];
-                
             } while (CurrentBuffs.ContainsKey(newBuff.title));
 
             CurrentBuffs.Add(newBuff.title, newBuff);
-
             OnGetBuff.Execute(newBuff);
+
+            _canAddBuff = false;
         }
 
         public void RemoveBuff(string key)
@@ -51,8 +59,15 @@ namespace MVVM.Controllers
         public override void Restart()
         {
             base.Restart();
-            
+
             CurrentBuffs.Clear();
+        }
+
+        public override void RoundEnd()
+        {
+            base.RoundEnd();
+
+            _canAddBuff = true;
         }
     }
 }
