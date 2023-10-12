@@ -60,6 +60,7 @@ namespace MVVM.Controllers
         {
             base.Restart();
 
+            _canAddBuff = true;
             CurrentBuffs.Clear();
         }
 

@@ -8,6 +8,50 @@ using UnityEngine;
 
 namespace Managers
 {
+    public abstract class BaseState
+    {
+        public bool IsActive;
+        
+        public virtual void Activate()
+        {
+            IsActive = true;
+        }
+        
+        public virtual void Deactivate()
+        {
+            IsActive = false;
+        }
+    }
+    public class RoundState : BaseState
+    {
+        private PlayerUiController _uiPanel;
+        public RoundState(PlayerUiController uiPanel, bool activeByDefault)
+        {
+            _uiPanel = uiPanel;
+
+            IsActive = activeByDefault;
+
+            if (IsActive)
+                Activate();
+            else 
+                Deactivate();
+        }
+
+        public sealed override void Activate()
+        {
+            base.Activate();
+            
+            _uiPanel.Activate();
+        }
+
+        public sealed override void Deactivate()
+        {
+            base.Deactivate();
+            
+            _uiPanel.Deactivate();
+        }
+    }
+    
     public class RoundManager : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI roundCounter;
@@ -22,7 +66,9 @@ namespace Managers
         private readonly PlayersTurnDto _playersTurn = new();
         private CompositeDisposable _disposable = new();
         private List<ModelsController> _gameControllers = new ();
-        
+
+        private List<RoundState> _states;
+
         private int _currentRound = 1;
 
         private int _timeInit = 0;
@@ -33,6 +79,17 @@ namespace Managers
             rightStarterInitializer.OnControllersInitialized.Subscribe(OnControllersInitialized).AddTo(_disposable);
 
             fightManager.OnMatchEnd.Subscribe(_ => Restart()).AddTo(_disposable);
+            
+            CreateStates();
+        }
+
+        private void CreateStates()
+        {
+            _states = new List<RoundState>
+            {
+                new(leftPanel, true),
+                new(rightPanel, false)
+            };
         }
         
         public void Restart()
@@ -41,7 +98,8 @@ namespace Managers
             RestartControllers();
             _currentRound = 1;
             SetCurrentRound();
-            ActivateFirst();
+            CreateStates();
+            // ActivateFirst();
         }
 
         private void OnControllersInitialized(List<ModelsController> controllers)
@@ -80,27 +138,40 @@ namespace Managers
 
         private void ActivateUi()
         {
-            if (_playersTurn.FirstIsReady())
+            foreach (var state in _states)
             {
-                ActivateSecond();
+                if (!state.IsActive)
+                {
+                    state.Activate();
+                }
+                else
+                {
+                    state.Deactivate();
+                }
             }
-            else
-            {
-                ActivateFirst();
-            }
+            //
+            //
+            // if (_playersTurn.FirstIsReady())
+            // {
+            //     ActivateSecond();
+            // }
+            // else
+            // {
+            //     ActivateFirst();
+            // }
         }
 
-        private void ActivateFirst()
-        {
-            leftPanel.Activate();
-            rightPanel.Deactivate();
-        }
-
-        private void ActivateSecond()
-        {
-            leftPanel.Deactivate();
-            rightPanel.Activate();
-        }
+        // private void ActivateFirst()
+        // {
+        //     leftPanel.Activate();
+        //     rightPanel.Deactivate();
+        // }
+        //
+        // private void ActivateSecond()
+        // {
+        //     leftPanel.Deactivate();
+        //     rightPanel.Activate();
+        // }
 
         private void NextRound()
         {
