@@ -4,7 +4,7 @@ using UnityEngine;
 namespace DTO.Configurations
 {
     [Serializable]
-    public class BuffConfigDto
+    public class BuffConfigDtoe
     {
         public string title;
         [Space]

@@ -15,5 +15,19 @@ namespace Enums
             Left, 
             Right
         }
+
+        public enum BuffType
+        {
+            OnYourself, 
+            OnEnemy
+        }
+
+        public enum BuffKind
+        {
+            Damage,
+            Health,
+            Armor,
+            Vampirism
+        }
     }
 }

@@ -149,30 +149,8 @@ namespace Managers
                     state.Deactivate();
                 }
             }
-            //
-            //
-            // if (_playersTurn.FirstIsReady())
-            // {
-            //     ActivateSecond();
-            // }
-            // else
-            // {
-            //     ActivateFirst();
-            // }
         }
-
-        // private void ActivateFirst()
-        // {
-        //     leftPanel.Activate();
-        //     rightPanel.Deactivate();
-        // }
-        //
-        // private void ActivateSecond()
-        // {
-        //     leftPanel.Deactivate();
-        //     rightPanel.Activate();
-        // }
-
+        
         private void NextRound()
         {
             OnRoundEnd();
