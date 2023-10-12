@@ -7,7 +7,6 @@ using MVVM.Controllers;
 using ScriptableObjects;
 using Services;
 using UniRx;
-using UnityEngine;
 
 namespace MVVM.ActiveUi.Model
 {
@@ -20,7 +19,6 @@ namespace MVVM.ActiveUi.Model
         private ActiveBuffsController _activeBuffsController;
 
         private DamagePerformerService _damagePerformerService;
-        private BuffPerformerService _buffPerformerService;
 
         private Enums.Enums.PlayerOriented _oriented;
         private FightManager _fightManager;
@@ -37,7 +35,6 @@ namespace MVVM.ActiveUi.Model
         {
             _playerStat = new PlayerStatDto();
             _damagePerformerService = new DamagePerformerService();
-            _buffPerformerService = new BuffPerformerService();
 
             _attackController = attackController;
             _playerConfigController = playerConfigController;
@@ -84,7 +81,6 @@ namespace MVVM.ActiveUi.Model
                     case Enums.Enums.PlayerConfigurationType.Damage:
                         _playerStat.damage = config.data.currentValue;
                         _playerStat.maxDamage = config.data.maxValue;
-
                         break;
                     case Enums.Enums.PlayerConfigurationType.Armor:
                         _playerStat.armor = config.data.currentValue;

@@ -28,9 +28,11 @@ namespace Services
                 double finalHeal = _attackDataDto.damage * healReduction; // Вычисление хила
                 _currentStat.health += (int)finalHeal;
                 
+                if (_currentStat.health > _currentStat.maxHealth)
+                    _currentStat.health = _currentStat.maxHealth;
+                
                 Debug.Log($"Heal: vampirism value {_attackDataDto.vampirismValue} attack damage {_attackDataDto.damage}" +
                           $" heal value {(int)finalHeal}");
-
 
                 return true;
             }

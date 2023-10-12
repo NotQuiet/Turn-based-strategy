@@ -80,13 +80,13 @@ namespace Buffs
                                 stat.damage /= buffData.value;
                                 break;
                             case Enums.Enums.BuffKind.Armor:
-                                stat.armor -= buffData.value;
+                                stat.armor -= Mathf.Abs(buffData.value);
                                 break;
                             case Enums.Enums.BuffKind.Health:
-                                stat.health -= buffData.value;
+                                stat.health -= Mathf.Abs(buffData.value);
                                 break;
                             case Enums.Enums.BuffKind.Vampirism:
-                                stat.vampirism -= buffData.value;
+                                stat.vampirism -= Mathf.Abs(buffData.value);
                                 break;
                             default:
                                 Debug.LogError("Cant find this kind");
@@ -99,12 +99,12 @@ namespace Buffs
                             case Enums.Enums.BuffKind.Damage:
                                 break;
                             case Enums.Enums.BuffKind.Armor:
-                                stat.armorDecrease -= buffData.value;
+                                stat.armorDecrease -= Mathf.Abs(buffData.value);
                                 break;
                             case Enums.Enums.BuffKind.Health:
                                 break;
                             case Enums.Enums.BuffKind.Vampirism:
-                                stat.vampirismDecrease -= buffData.value;
+                                stat.vampirismDecrease -= Mathf.Abs(buffData.value);
                                 break;
                             default:
                                 Debug.LogError("Cant find this kind");

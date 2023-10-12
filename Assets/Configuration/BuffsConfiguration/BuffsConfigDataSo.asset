@@ -18,7 +18,7 @@ MonoBehaviour:
     data:
     - kind: 0
       value: 2
-    lifeTime: 2
+    lifeTime: 1
   - title: Armor self
     buffType: 0
     data:
@@ -30,7 +30,7 @@ MonoBehaviour:
     data:
     - kind: 2
       value: -10
-    lifeTime: 3
+    lifeTime: 2
   - title: Vampirism self
     buffType: 0
     data:
@@ -38,10 +38,10 @@ MonoBehaviour:
       value: -25
     - kind: 3
       value: 50
-    lifeTime: 1
+    lifeTime: 2
   - title: Vampirism decrease
     buffType: 1
     data:
     - kind: 3
       value: -25
-    lifeTime: 3
+    lifeTime: 2
