@@ -9,6 +9,7 @@ namespace Managers
         public ReactiveCommand<(Enums.Enums.PlayerOriented oriented, AttackDataDto attackDataDto)> OnGetDamage = new();
         public ReactiveCommand<(Enums.Enums.PlayerOriented oriented, AttackDataDto attackDataDto)> OnGetHeal = new();
 
+        
         public ReactiveCommand OnMatchEnd = new();
 
         public void MakeAttack(Enums.Enums.PlayerOriented oriented, AttackDataDto attackDataDto)
